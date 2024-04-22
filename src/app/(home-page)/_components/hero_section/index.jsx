@@ -28,9 +28,8 @@ const HeroSection = () => {
                   backgroundColor="transparent"
                   textColor="#1f22b8"
                   border="none"
-                  children="Search"
-                  className={"p-4 font-medium text-xl"}
-                />
+                  className={"p-4 font-medium text-xl"}>Search</Button>
+                
               </div>
             </div>
           </div>

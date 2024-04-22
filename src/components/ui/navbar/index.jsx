@@ -30,23 +30,21 @@ const Navbar = () => {
           className="items-center md:gap-4 xl:gap-8 hidden md:flex mx-10"
         >
           <Button
-            children="Sign up"
             padding="10px 25px"
             backgroundColor="transparent"
             className="text-nowrap hover:!bg-secondary hover:!text-primary transition-all ease-in"
-            textColor="#1f22b8"
-          />
+            textColor="#1f22b8">Sign up</Button>
+          
         </Link>
         <Link
           href="/signin"
           className="items-center md:gap-4 xl:gap-8 hidden md:flex mx-10"
         >
           <Button
-            children="Sign in"
             padding="10px 25px"
             className="text-nowrap hover:!bg-primary hover:!text-secondary hover:!border-secondary transition-all ease-in"
-            textColor="#ffffff"
-          />
+            textColor="#ffffff">Sign in</Button>
+          
         </Link>
 
         <div className="md:hidden block cursor-pointer">
@@ -100,22 +98,20 @@ const Navbar = () => {
           <div className="flex items-center space-x-10 absolute bottom-0 my-6">
             <Link href="/">
               <Button
-                children="Sign in"
                 padding="10px 25px"
                 className="text-nowrap hover:!bg-primary hover:!text-secondary hover:!border-secondary transition-all ease-in"
-                textColor="#ffffff"
-              />
+                textColor="#ffffff">Sign in</Button>
+              
             </Link>
             <Link
               href="/signin"
               className="items-center md:gap-4 xl:gap-8 hidden md:flex mx-10"
             >
               <Button
-                children="Sign in"
                 padding="10px 25px"
                 className="text-nowrap hover:!bg-primary hover:!text-secondary hover:!border-secondary transition-all ease-in"
-                textColor="#ffffff"
-              />
+                textColor="#ffffff">Sign in</Button>
+              
             </Link>
           </div>
         </div>

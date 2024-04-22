@@ -22,12 +22,11 @@ const InfoSection = () => {
           photo gallery of properties
         </span>
         <Button
-          children="See All Listing"
           border="none"
           className="absolute top-12 md:top-[11.5rem] text-xs !p-1 md:!px-6 font-semibold md:text-base !bg-opacity-60"
           borderRadius="0"
-          padding="10px 25px"
-        />
+          padding="10px 25px">See All Listing</Button>
+        
       </div>
       <div className="flex items-center justify-center flex-col gap-2">
         <Image width={400} height={300} src={info2} alt="map" />
