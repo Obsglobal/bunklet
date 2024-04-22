@@ -20,7 +20,7 @@ const Navbar = () => {
         <div className="md:flex hidden w-full md:px-0 px-6 xl:px-4 justify-center items-center md:ml-12 font-medium text-[#1f22b8] text-lg space-x-10">
           <Link href={"/for-rent"}>For Rent</Link>
           <Link href={"/for-sale"}>For Sale</Link>
-          <Link href={"/faqs"}>FAQ's</Link>
+          <Link href={"/faqs"}>FAQ&#39;s</Link>
           <Link href={"/about-us"}>About us</Link>
           <Link href={"/contact-us"}>Contact us</Link>
         </div>
