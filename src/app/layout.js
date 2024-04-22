@@ -1,11 +1,11 @@
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
 
-const OpenSans = Open_Sans ({ subsets: ["latin"] });
+const OpenSans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Obsglobal",
-  description: "The Nigeria Number One Real Estate Company",
+  description: "The Number One Real Estate Company",
 };
 
 export default function RootLayout({ children }) {
