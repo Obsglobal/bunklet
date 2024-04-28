@@ -1,7 +1,10 @@
-import { Navbar } from "@/components/ui"
-import HeroSection from "./_components/hero_section"
-import InfoSection from "./_components/info_section"
-import AboutUs from "./_components/about-us_section"
+import { Navbar } from "@/components/ui";
+import HeroSection from "./_components/hero_section";
+import InfoSection from "./_components/info_section";
+import AboutUs from "./_components/about-us_section";
+import FeaturedListing from "./_components/featured-listing_section";
+import PopularListing from "./_components/popular-listing_section";
+import Footer from "@/components/ui/footer";
 
 const HomePage = () => {
   return (
@@ -10,8 +13,11 @@ const HomePage = () => {
       <HeroSection />
       <InfoSection />
       <AboutUs />
+      <FeaturedListing />
+      <PopularListing />
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
