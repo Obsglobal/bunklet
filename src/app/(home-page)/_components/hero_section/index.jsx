@@ -14,7 +14,7 @@ const HeroSection = () => {
             <div className="flex items-center justify-center flex-col space-y-20 md:space-y-40 w-full">
               <div className="bg-primary p-4 flex items-center justify-center space-y-10">
                 <div className="text-base md:text-xl px-4 py-10 xl:text-3xl text-center bg-secondary w-[100%] uppercase font-medium ">
-                  Nigeria's <br />
+                  Nigeria&apos;s <br />
                   <span className="font-extrabold">Number one</span> <br />
                   <span>real estate company</span>
                 </div>
