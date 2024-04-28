@@ -9,45 +9,50 @@ const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   return (
     <>
-      <div className="flex items-center px-6 lg:px-16 xl:px-24 justify-between h-16 bg-primary text-black md:h-24 fixed md:top-0 top-0 z-50 bg-none w-full transition-all ease-out duration-300 xl:gap-0 md:gap-8 animate-fade_in">
-        <Link href="/" className="text-xl md:text-2xl">
+      <div className="flex items-center px-6 lg:px-16 xl:px-24 justify-between h-16 bg-primary text-black md:h-18 lg:h-24 fixed md:top-0 top-0 z-50 bg-none w-full transition-all ease-out duration-300 animate-fade_in">
+        <Link href="/">
           <img
             src="/obsglobal.png"
             alt="obsglobal"
-            className="md:w-full w-24"
+            className="lg:w-full w-24"
           />
         </Link>
-        <div className="md:flex hidden w-full md:px-0 px-6 xl:px-4 justify-center items-center md:ml-12 font-medium text-[#1f22b8] text-lg space-x-10">
+        <div className="lg:flex hidden w-full md:px-0 px-6 xl:px-4 justify-center items-center md:ml-12 font-medium text-[#1f22b8] text-lg space-x-10">
           <Link href={"/for-rent"}>For Rent</Link>
           <Link href={"/for-sale"}>For Sale</Link>
           <Link href={"/faqs"}>FAQ&#39;s</Link>
           <Link href={"/about-us"}>About us</Link>
           <Link href={"/contact-us"}>Contact us</Link>
         </div>
+        <div className="flex gap-4 pl-3">
+          <Link
+            href="/signout"
+            className="items-center md:gap-4 xl:gap-8 hidden lg:flex mx-0"
+          >
+            <Button
+              padding="10px 25px"
+              backgroundColor="transparent"
+              className="text-nowrap hover:!bg-secondary hover:!text-primary transition-all ease-in"
+              textColor="#1f22b8"
+            >
+              Sign up
+            </Button>
+          </Link>
+          <Link
+            href="/signin"
+            className="items-center md:gap-4 xl:gap-8 hidden lg:flex mx-0"
+          >
+            <Button
+              padding="10px 25px"
+              className="text-nowrap hover:!bg-primary hover:!text-secondary hover:!border-secondary transition-all ease-in"
+              textColor="#ffffff"
+            >
+              Sign in
+            </Button>
+          </Link>
+        </div>
 
-        <Link
-          href="/signout"
-          className="items-center md:gap-4 xl:gap-8 hidden md:flex mx-10"
-        >
-          <Button
-            padding="10px 25px"
-            backgroundColor="transparent"
-            className="text-nowrap hover:!bg-secondary hover:!text-primary transition-all ease-in"
-            textColor="#1f22b8">Sign up</Button>
-          
-        </Link>
-        <Link
-          href="/signin"
-          className="items-center md:gap-4 xl:gap-8 hidden md:flex mx-10"
-        >
-          <Button
-            padding="10px 25px"
-            className="text-nowrap hover:!bg-primary hover:!text-secondary hover:!border-secondary transition-all ease-in"
-            textColor="#ffffff">Sign in</Button>
-          
-        </Link>
-
-        <div className="md:hidden block cursor-pointer">
+        <div className="lg:hidden block cursor-pointer">
           <GiHamburgerMenu
             color="#1f22b8"
             fontSize={27}
@@ -100,8 +105,10 @@ const Navbar = () => {
               <Button
                 padding="10px 25px"
                 className="text-nowrap hover:!bg-primary hover:!text-secondary hover:!border-secondary transition-all ease-in"
-                textColor="#ffffff">Sign in</Button>
-              
+                textColor="#ffffff"
+              >
+                Sign in
+              </Button>
             </Link>
             <Link
               href="/signin"
@@ -110,8 +117,10 @@ const Navbar = () => {
               <Button
                 padding="10px 25px"
                 className="text-nowrap hover:!bg-primary hover:!text-secondary hover:!border-secondary transition-all ease-in"
-                textColor="#ffffff">Sign in</Button>
-              
+                textColor="#ffffff"
+              >
+                Sign in
+              </Button>
             </Link>
           </div>
         </div>

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui";
 
 const InfoSection = () => {
   return (
-    <div className="flex md:flex-row gap-10 items-center justify-around font-open_sans text-black absolute top-[38rem] md:top-[52rem] mx-auto w-full">
+    <div className="flex md:flex-row gap-2 md:gap-10 items-center justify-around font-open_sans text-black absolute top-[38rem] px-6 md:px-0 md:top-[52rem] mx-auto w-full">
       <div className="flex items-center justify-center flex-col gap-2">
         <Image
           width={400}
