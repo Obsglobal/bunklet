@@ -5,8 +5,8 @@ import React from "react";
 
 const PopularListing = () => {
   return (
-    <div className="md:px-24 px-6 py-10">
-      <span className="lg:text-[40px] md:text-xl text-lg font-semibold">Popular Listing</span>
+    <div className="lg:px-24 px-6 py-10">
+      <span className="lg:text-[40px] md:text-2xl text-lg font-semibold">Popular Listing</span>
       <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
         {popularProperties.map((property) => (
           <PropertyCard property={property} key={property.id} />

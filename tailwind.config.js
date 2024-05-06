@@ -11,6 +11,7 @@ module.exports = {
         primary: "#ffffff",
         secondary: "#4361EE",
         darkgrey: "#292929",
+        darkside: "#1F1F1F"
       },
       fontFamily: {
         open_sans: ["'Open sans'"],

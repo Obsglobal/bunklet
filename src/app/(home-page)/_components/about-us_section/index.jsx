@@ -5,10 +5,10 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <div className="md:px-24 px-6 mt-[15rem] md:mt-[30rem]">
-      <div className="flex md:flex-row flex-col items-center justify-between w-full">
-        <div className="flex flex-col w-full md:w-[40%] space-y-4">
-          <span className="capitalize font-semibold text-2xl md:text-4xl">
+    <div className="lg:px-24 px-6 mt-[15rem] md:mt-[20rem] lg:mt-[30rem]">
+      <div className="flex md:flex-row flex-col items-center md:gap-16 lg:gap-0 justify-between w-full">
+        <div className="flex flex-col w-full lg:w-[40%] space-y-4">
+          <span className="capitalize font-semibold text-base md:text-2xl lg:text-4xl">
             about us
           </span>
           <span className="text-base">
@@ -27,7 +27,7 @@ const AboutUs = () => {
             Read more
           </Link>
         </div>
-        <div className="md:mr-10 mt-10 md:mt-0 relative md:ml-0 mr-0 ml-4">
+        <div className="lg:mr-10 mt-10 md:mt-0 relative md:ml-0 mr-0 ml-4">
           <Image
             src={about}
             width={600}

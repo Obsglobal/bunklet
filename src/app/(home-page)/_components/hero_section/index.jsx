@@ -22,6 +22,7 @@ const HeroSection = () => {
               <div className="bg-primary my-8 bg-opacity-35 p-3 md:p-6 flex w-full">
                 <input
                   type="text"
+                  placeholder="Type a city name e.g Maitama"
                   className="w-full bg-primary p-4 outline-none text-black"
                 />
                 <Button
