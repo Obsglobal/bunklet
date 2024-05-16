@@ -61,7 +61,7 @@ const Navbar = () => {
         </div>
       </div>
       {toggleMenu && (
-        <div className="fixed top-0 left-0 w-full bg-primary transition-all duration-150 flex flex-col z-50 justify-center items-center animate-slideBottom overflow-none h-full">
+        <div className="fixed overflow-hidden top-0 left-0 w-full bg-primary transition-all duration-150 flex flex-col z-50 justify-center items-center animate-slideBottom overflow-none h-full">
           <LuX
             className="text-2xl absolute top-5 right-6 cursor-pointer"
             color="#1f22b8"
@@ -78,7 +78,7 @@ const Navbar = () => {
             <li className="m-6 mt-12 cursor-pointer text-primary text-xl">
               <div className="flex justify-between items-center">
                 <Link
-                  href="/market-place"
+                  href="/for-sale"
                   className="text-secondary font-semibold"
                 >
                   For Sale
@@ -87,14 +87,14 @@ const Navbar = () => {
             </li>
             <li className="m-6 mt-12 cursor-pointer text-primary text-xl">
               <div className="flex justify-between items-center">
-                <Link href="/" className="text-secondary font-semibold">
+                <Link href="/for-rent" className="text-secondary font-semibold">
                   For Rent
                 </Link>
               </div>
             </li>
             <li className="m-6 mt-12 cursor-pointer text-primary text-xl">
               <div className="flex justify-between items-center">
-                <Link href="/" className="text-secondary font-semibold">
+                <Link href="/about-us" className="text-secondary font-semibold">
                   About Us
                 </Link>
               </div>
