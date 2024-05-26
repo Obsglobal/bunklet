@@ -26,7 +26,7 @@ const Navbar = () => {
         </div>
         <div className="flex gap-4 pl-3">
           <Link
-            href="/signout"
+            href="/signup"
             className="items-center md:gap-4 xl:gap-8 hidden lg:flex mx-0"
           >
             <Button
@@ -101,13 +101,13 @@ const Navbar = () => {
             </li>
           </ul>
           <div className="flex items-center space-x-10 absolute bottom-0 my-6">
-            <Link href="/">
+            <Link href="/signup">
               <Button
                 padding="10px 25px"
                 className="text-nowrap hover:!bg-primary hover:!text-secondary hover:!border-secondary transition-all ease-in"
                 textColor="#ffffff"
               >
-                Sign in
+                Sign up
               </Button>
             </Link>
             <Link
