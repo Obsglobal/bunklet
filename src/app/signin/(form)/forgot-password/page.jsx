@@ -6,32 +6,39 @@ import { useRouter } from "next/navigation";
 
 const ForgotPassword = () => {
   const router = useRouter();
-  const [email, setEmail] = useState();
-  const [errorState, setErrorState] = useState("");
-
+  const [details, setDetails] = useState({
+    email: "",
+  });
+  const [errorState, setErrorState] = useState({
+    emailError: "",
+  });
   const validate = () => {
     let isError = false;
+    const errors = {
+      emailError: "",
+    };
 
-    if (email === '') {
+    if (!details.email) {
       isError = true;
-      setErrorState("Please enter your email");
+      errors.emailError = "Please enter your email";
     }
+
+    setErrorState({ ...errorState, ...errors });
+    return isError;
   };
 
   const handleForm = (e) => {
-    setEmail(e.target.value);
+    setDetails({ ...details, [e.target.name]: e.target.value });
   };
-
+  console.log(details.email);
   const handleSubmit = (e) => {
     e.preventDefault();
     const error = validate();
 
-    if (error !== '') {
-      // dispatch(formdata({ personal_details: details }));
+    if (!error) {
       router.push("/signin/forgot-password/successful");
     }
   };
-
   return (
     <Container>
       <div className="flex flex-col h-screen justify-center md:px-20 space-y-6 md:w-1/2 w-5/6 items-start">
@@ -53,11 +60,14 @@ const ForgotPassword = () => {
                 <input
                   type="email"
                   id="email"
+                  name='email'
                   placeholder="example@email.com"
                   className="text-[#777272] font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
                   onChange={handleForm}
                 />
-                <span className="text-sm text-[#e62e2e]">{errorState}</span>
+                <span className="text-sm text-[#e62e2e]">
+                  {errorState.emailError}
+                </span>
               </div>
               <Button
                 className="w-full hover:scale-105 transition-all ease-in"
