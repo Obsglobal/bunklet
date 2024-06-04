@@ -1,8 +1,10 @@
 import Link from "next/link";
 import React from "react";
+import StoreProvider from "../StoreProvider";
 
 const Container = ({children}) => {
   return (
+    <StoreProvider>
     <div className="overflow-hidden w-full">
       <Link href='/' className="fixed top-0 py-16 px-10">
         <img src="/obsglobal.png" className="md:w-[200px] w-[100px]" alt="logo" />
@@ -15,6 +17,7 @@ const Container = ({children}) => {
         />
       </div>
     </div>
+    </StoreProvider>
   );
 };
 

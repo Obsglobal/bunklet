@@ -39,20 +39,38 @@ const SigninForm = () => {
     setDetails({ ...details, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const error = validate();
 
     if (!error) {
-      // dispatch(formdata({ personal_details: details }));
-      push("/");
+      try {
+        // Make the API request here
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/accounts/sign-in/`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(details),
+        });
+
+        if (response.ok) {
+          // Handle successful form submission
+          router.push("/");
+        } else {
+          // Handle API errors
+          console.error("API request failed:", response);
+        }
+      } catch (error) {
+        console.error("API request failed:", error);
+      }
     }
   };
 
   return (
     <Container>
       <div className="flex flex-col h-screen justify-center md:px-20 space-y-6 md:w-1/2 w-5/6 items-start">
-        <form action="/" method="post" className="w-full">
+        <form onClick={handleSubmit} className="w-full">
           <div className="md:px-10">
             <h1 className="text-center md:text-3xl font-semibold">Sign In</h1>
             <div className="flex flex-col gap-3">
@@ -91,7 +109,7 @@ const SigninForm = () => {
               <Button
                 className="w-full hover:scale-105 transition-all ease-in"
                 padding="18px"
-                onClick={handleSubmit}
+                type='submit'
               >
                 Sign in
               </Button>
