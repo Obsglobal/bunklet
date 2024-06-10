@@ -132,3 +132,77 @@ export const newProperties = [
     parking: "1 parking space",
   },
 ];
+
+export const propertyDetails = [
+  {
+    id: 0,
+    title: "4 BEDROOM MINI FLAT",
+    status: "For sale",
+    price: "49,578,000",
+    agent: "Sherifat Omotola",
+    location: "Maitama, Abuja",
+    features: [
+      {
+        id: 0,
+        title: "4 Bedroom",
+      },
+      {
+        id: 1,
+        title: "1 Sitting room",
+      },
+      {
+        id: 2,
+        title: "2 toilet",
+      },
+      {
+        id: 3,
+        title: "2 Bathroom",
+      },
+      {
+        id: 4,
+        title: "4567 sq feet",
+      },
+      {
+        id: 5,
+        title: "Free Wi-Fi",
+      },
+      {
+        id: 6,
+        title: "Sound proof",
+      },
+     
+      {
+        id: 7,
+        title: "Fully fenced",
+      },
+      {
+        id: 8,
+        title: "Air conditioned",
+      },
+      {
+        id: 9,
+        title: "Drainage system",
+      },
+      {
+        id: 10,
+        title: "Swimming pool",
+      },
+      {
+        id: 11,
+        title: "CCTV",
+      },
+      {
+        id: 12,
+        title: "2 Garage spaces",
+      },
+      {
+        id: 12,
+        title: "Built in 2022",
+      },
+    ],
+    description:
+      "orem ipsum dolor sit amet consectetur. Turpis magna lorem et ut ut accumsan. Est felis ultrices risus ante ultricies nisi diam adipiscing erat. Quis elementum suspendisse semper et ut. Dictumst urna semper sit accumsan enim a. Ultricies elementum convallis massa urna fames sit aliquam nunc. Ac felis scelerisque morbi eu risus malesuada mauris donec. Non phasellus nulla non eget sed vestibulum at ac sapien. Non habitant aliquet neque ac. At eu auctor bibendum magna elementum. Euismod purus ut dolor molestie magna tristique nulla. Sed id elit leo blandit netus id. Iaculis laoreet aliquam mattis elementum tur.",
+    inspection_fee: "vary(N2500 - N10,000)",
+    agent_fee: "3%",
+  },
+];

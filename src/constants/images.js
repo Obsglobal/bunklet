@@ -5,4 +5,7 @@ export { default as about } from "../assets/images/about.png";
 export { default as about2 } from "../assets/images/about2.png";
 export { default as dropdown } from "../assets/images/dropdown.png";
 export { default as location } from "../assets/images/location.png";
+export { default as arrowright } from "../assets/images/arrow-square-right.svg";
+export { default as arrowleft } from "../assets/images/arrow-square-left.svg";
 export { default as home } from "../assets/images/home.png";
+export { default as tickcircle} from "../assets/images/tick-circle.png";

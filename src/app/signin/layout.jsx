@@ -4,10 +4,10 @@ import React from "react";
 const Container = ({ children }) => {
   return (
     <div className="overflow-hidden w-full">
-      <Link href='/' className="fixed top-0 py-16 px-10">
+      <Link href='/' className="fixed top-0 py-8 px-10">
         <img
           src="/obsglobal.png"
-          className="md:w-[200px] w-[100px]"
+          className="md:w-[150px] w-[100px]"
           alt="logo"
         />
       </Link>
