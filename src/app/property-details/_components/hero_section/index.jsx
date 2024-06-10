@@ -11,8 +11,8 @@ const HeroSection = () => {
     >
       <div className="absolute top-[50%]">
         <div className="flex justify-between w-screen px-10">
-        <Image width={20} height={20} src={arrowleft} />
-        <Image width={20} height={20} src={arrowright} />
+        <Image width={20} height={20} src={arrowleft} alt="previous" />
+        <Image width={20} height={20} src={arrowright} alt="next" />
         </div>
       </div>
       

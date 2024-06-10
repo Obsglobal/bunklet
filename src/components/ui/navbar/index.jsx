@@ -13,7 +13,7 @@ const Navbar = () => {
         <Link href="/">
           <img
             src="/obsglobal.png"
-            alt="obsglobal"
+            alt="logo"
             className="lg:w-full w-24"
           />
         </Link>

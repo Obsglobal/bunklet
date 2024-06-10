@@ -24,7 +24,7 @@ const PropertyCard = ({ property }) => {
         </div>
         <div className="flex flex-col w-full ">
           <div className="flex items">
-          <img src={location} alt="" />
+          <img src={location} alt="location" />
           <span className="capitalize text-base">{property.location}</span>
           </div>
          
