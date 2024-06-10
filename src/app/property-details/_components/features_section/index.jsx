@@ -8,7 +8,7 @@ const Features = () => {
   return (
     <div className="md:px-20 px-6 py-10 text-darkgrey ">
       {propertyDetails.map((property) => (
-        <div className="flex md:flex-row flex-col justify-between w-full">
+        <div className="flex md:flex-row flex-col justify-between w-full" key={property.id}>
           <div className="flex md:w-3/4 gap-3 flex-col" key={property.id}>
             <div className="flex flex-col space-y-3 ">
               <span className="bg-[#EE6C43] px-3 py-2 text-primary w-fit font-semibold">
