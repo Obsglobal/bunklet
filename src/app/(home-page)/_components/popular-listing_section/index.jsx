@@ -9,7 +9,9 @@ const PopularListing = () => {
       <span className="lg:text-[40px] md:text-2xl text-lg font-semibold">Popular Listing</span>
       <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
         {popularProperties.map((property) => (
-          <PropertyCard property={property} key={property.id} />
+          <Link href={`/property-details/${property.id}`} key={property.id} >
+          <PropertyCard property={property} />
+          </Link>
         ))}
       </div>
       <div className="flex justify-end py-3">

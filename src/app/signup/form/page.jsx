@@ -8,13 +8,12 @@ import { useAppSelector } from "@/lib/hooks";
 
 const SignupForm = () => {
   const role = useAppSelector((state) => state.role.role);
-  
-  const { push } = useRouter;
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const { push } = useRouter();
   const [details, setDetails] = useState({
-    firstname: "",
+    first_name: "",
     email: "",
     password: "",
-    confirmpassword: "",
     role: role
   });
   const [errorState, setErrorState] = useState({
@@ -24,6 +23,9 @@ const SignupForm = () => {
     confirmpasswordError: "",
   });
   console.log(details)
+  const handleConfimPassword = (e) => {
+    setConfirmPassword(e.target.value)
+  }
   const validate = () => {
     let isError = false;
     const errors = {
@@ -32,7 +34,7 @@ const SignupForm = () => {
       passwordError: "",
       confirmpasswordError: "",
     };
-     if (!details.firstname) {
+     if (!details.first_name) {
       isError = true;
       errors.firstnameError = "Please enter your first name";
     }
@@ -44,14 +46,13 @@ const SignupForm = () => {
       isError = true;
       errors.passwordError = "Please enter a valid password";
     }
-    if (details.password !== details.confirmpassword) {
+    if (details.password !== confirmPassword) {
       isError = true;
       errors.confirmpasswordError = "Passwords do not match";
     }
     setErrorState({ ...errorState, ...errors });
     return isError;
   };
-
   const handleForm = (e) => {
     setDetails({ ...details, [e.target.name]: e.target.value });
   };
@@ -72,7 +73,7 @@ const SignupForm = () => {
 
         if (response.ok) {
           // Handle successful form submission
-          push("/");
+          push("/signin");
         } else {
           // Handle API errors
           console.error("API request failed:", response);
@@ -92,13 +93,13 @@ const SignupForm = () => {
             <h1 className="text-center md:text-3xl font-semibold">Sign Up</h1>
             <div className="flex flex-col gap-3">
               <div className="flex flex-col gap-2">
-                <label htmlFor="email" className="md:text-[20px]">
+                <label htmlFor="first_name" className="md:text-[20px]">
                   First Name
                 </label>
                 <input
                   type="text"
-                  id="firstname"
-                  name="firstname"
+                  id="first_name"
+                  name="first_name"
                   placeholder="Enter your first name"
                   className="text-[#777272] font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
                   onChange={handleForm}
@@ -149,7 +150,7 @@ const SignupForm = () => {
                   name="confirmpassword"
                   placeholder="Confirm password"
                   className="text-[#777272] font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
-                  onChange={handleForm}
+                  onChange={handleConfimPassword}
                 /> <span className="text-sm text-[#e62e2e]">
                 {errorState.confirmpasswordError}
               </span>

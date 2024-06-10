@@ -6,10 +6,12 @@ import { useRouter } from "next/navigation";
 const ResetPassword = () => {
   const { push } = useRouter();
   const [details, setDetails] = useState({
+    email: "",
     password: "",
     confirmpassword: "",
   });
   const [errorState, setErrorState] = useState({
+    emailError: "",
     passwordError: "",
     confirmpasswordError: "",
   });
@@ -17,9 +19,14 @@ const ResetPassword = () => {
   const validate = () => {
     let isError = false;
     const errors = {
+      emailError: "",
       passwordError: "",
       confirmpasswordError: "",
     };
+    if (!details.email) {
+      isError = true;
+      errors.emailError = "Please enter your email";
+    }
     if (!details.password) {
       isError = true;
       errors.passwordError = "Please enter a new password";
@@ -48,55 +55,73 @@ const ResetPassword = () => {
   };
 
   return (
-      <div className="flex flex-col h-screen justify-center md:px-20 space-y-6 md:w-1/2 w-5/6 items-start">
-        <form action="/" method="post" className="w-full">
-          <div className="md:px-10">
-            <h1 className="text-center md:text-3xl font-semibold">Sign In</h1>
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col gap-2">
-                <label htmlFor="email" className="md:text-[20px]">
-                  Enter New Password
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  name='password'
-                  placeholder=""
-                  className="text-[#777272] font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
-                  onChange={handleForm}
-                />
-                <span className="text-sm text-[#e62e2e]">
-                  {errorState.passwordError}
-                </span>
-              </div>
-              <div className="flex flex-col gap-2">
-                <label htmlFor="password" className="md:text-[20px]">
-                  Confirm Password
-                </label>
-                <input
-                  type="password"
-                  id="confirmpassword"
-                  name="confirmpassword"
-                  placeholder=""
-                  className="text-[#777272] font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
-                  onChange={handleForm}
-                />
-                <span className="text-sm text-[#e62e2e]">
-                  {errorState.confirmpasswordError}
-                </span>
-              </div>
-
-              <Button
-                className="w-full hover:scale-105 transition-all ease-in"
-                padding="18px"
-                onClick={handleSubmit}
-              >
-                Submit
-              </Button>
+    <div className="flex flex-col h-screen justify-center md:px-20 space-y-6 md:w-1/2 w-5/6 items-start">
+      <form action="/" method="post" className="w-full">
+        <div className="md:px-10">
+          <h1 className="text-center md:text-3xl font-semibold">
+            Reset Password
+          </h1>
+          <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="email" className="md:text-[20px]">
+                Enter Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                className="text-[#777272] font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
+                onChange={handleForm}
+              />
+              <span className="text-sm text-[#e62e2e]">
+                {errorState.emailError}
+              </span>
             </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="password" className="md:text-[20px]">
+                Enter New Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder=""
+                className="text-[#777272] font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
+                onChange={handleForm}
+              />
+              <span className="text-sm text-[#e62e2e]">
+                {errorState.passwordError}
+              </span>
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="password" className="md:text-[20px]">
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                id="confirmpassword"
+                name="confirmpassword"
+                placeholder=""
+                className="text-[#777272] font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
+                onChange={handleForm}
+              />
+              <span className="text-sm text-[#e62e2e]">
+                {errorState.confirmpasswordError}
+              </span>
+            </div>
+
+            <Button
+              className="w-full hover:scale-105 transition-all ease-in"
+              padding="18px"
+              onClick={handleSubmit}
+            >
+              Submit
+            </Button>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
+    </div>
   );
 };
 

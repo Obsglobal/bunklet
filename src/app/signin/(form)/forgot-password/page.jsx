@@ -30,7 +30,6 @@ const ForgotPassword = () => {
   const handleForm = (e) => {
     setDetails({ ...details, [e.target.name]: e.target.value });
   };
-  console.log(details.email);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const error = validate();
@@ -38,7 +37,7 @@ const ForgotPassword = () => {
     if (!error) {
       try {
         // Make the API request here
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/accounts/sign-in/`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/accounts/forgot-password/`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

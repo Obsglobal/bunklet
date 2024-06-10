@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const SigninForm = () => {
-  const { push } = useRouter;
+  const { push } = useRouter();
   const [details, setDetails] = useState({
     email: "",
     password: "",
@@ -56,7 +56,7 @@ const SigninForm = () => {
 
         if (response.ok) {
           // Handle successful form submission
-          router.push("/");
+          push("/");
         } else {
           // Handle API errors
           console.error("API request failed:", response);
@@ -81,6 +81,7 @@ const SigninForm = () => {
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   placeholder="example@email.com"
                   className="text-[#777272] font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
                   onChange={handleForm}

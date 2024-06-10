@@ -14,7 +14,7 @@ const PropertyCard = ({ property }) => {
       />
       <div className="flex flex-col w-full px-3 pt-3">
         <div className="flex justify-between items-center">
-          <span className="uppercase font-semibold text-base md:text-2xl">
+          <span className="uppercase font-semibold text-base md:text-xl">
             {property.title}
           </span>
           <span className="flex items-center gap-1 text-xl">
@@ -24,11 +24,11 @@ const PropertyCard = ({ property }) => {
         </div>
         <div className="flex flex-col w-full ">
           <div className="flex items">
-          <img src={location} alt="" />
+          <img src={location} alt="location" />
           <span className="capitalize text-base">{property.location}</span>
           </div>
          
-          <div className="flex items-start flex-wrap pt-4 gap-3 text-sm md:text-base">
+          <div className="flex items-start flex-wrap pt-4 gap-3 text-xs md:text-sm">
             <div className="text-[#3d3d3d] text-center bg-[#D8D8D8] text-nowrap px-[10px] py-2">
               {property.room}
             </div>
