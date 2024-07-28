@@ -56,6 +56,7 @@ const SigninForm = () => {
             headers: {
               "Content-Type": "application/json",
             },
+
             body: JSON.stringify(details),
           }
         );
@@ -76,73 +77,90 @@ const SigninForm = () => {
 
   return (
     <Container>
-      <div className="flex flex-col h-[70vh] justify-center md:px-20 space-y-6 md:w-1/2 w-5/6 items-start">
-        <form onClick={handleSubmit} className="w-full">
-          <div className="md:px-10">
-            <h1 className="text-center md:text-xl font-semibold">Sign In</h1>
-            <div className="flex flex-col">
-              <div className="flex flex-col gap-2">
-                <label htmlFor="email" className="md:text-base">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="example@email.com"
-                  className="text-[#777272] text-sm font-medium outline-none border-2 border-[#bebbbb] py-4 px-3"
-                  onChange={handleForm}
-                />
-                <span className="text-sm text-[#e62e2e]">
-                  {errorState.emailError}
-                </span>
-              </div>
-              <div className="flex flex-col gap-2">
-                <label htmlFor="password" className="md:text-base">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="Enter password"
-                  className="text-[#777272] text-sm font-mmedium outline-none border-2 border-[#bebbbb] py-4 px-3"
-                  onChange={handleForm}
-                />
-                <span className="text-sm text-[#e62e2e]">
-                  {errorState.passwordError}
-                </span>
-              </div>
-              <div className="ml-auto">
-                <Link
-                  href="/signin/forgot-password"
-                  className="text-lightblue text-sm my-1"
+      <div className="flex flex-col w-5/6 mt-20">
+      <Link href="/" className=" absolute top-10 left-10">
+          <Image
+            width={100}
+            height={100}
+            src="/obsglobal.png"
+            className="md:w-[100px] w-[80px]"
+            alt="logo"
+          />
+        </Link>
+        <div className="flex flex-col h-[70vh] justify-center md:px-20 space-y-6 md:w-1/2 w-5/6 items-start">
+          <form onClick={handleSubmit} className="w-full">
+            <div className="md:px-10">
+              <h1 className="text-center md:text-xl font-semibold">Sign In</h1>
+              <div className="flex flex-col">
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="email" className="md:text-base">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="example@email.com"
+                    className="text-[#777272] text-sm font-medium outline-none border-2 border-[#bebbbb] py-4 px-3"
+                    onChange={handleForm}
+                  />
+                  <span className="text-sm text-[#e62e2e]">
+                    {errorState.emailError}
+                  </span>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="password" className="md:text-base">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter password"
+                    className="text-[#777272] text-sm font-mmedium outline-none border-2 border-[#bebbbb] py-4 px-3"
+                    onChange={handleForm}
+                  />
+                  <span className="text-sm text-[#e62e2e]">
+                    {errorState.passwordError}
+                  </span>
+                </div>
+                <div className="ml-auto">
+                  <Link
+                    href="/signin/forgot-password"
+                    className="text-lightblue text-sm my-1"
+                  >
+                    Forgot Password?
+                  </Link>
+                </div>
+                <Button
+                  className="w-full hover:scale-105 flex justify-center transition-all ease-in"
+                  padding="18px"
+                  type="submit"
+                  disabled={loading}
                 >
-                  Forgot Password?
-                </Link>
+                  {loading ? (
+                    <Image
+                      width={25}
+                      height={25}
+                      src={spinner}
+                      alt="loading"
+                      className="w-[25px]"
+                    />
+                  ) : (
+                    <span>Sign up</span>
+                  )}
+                </Button>
+                <Button onClick={handleSubmit} className=""></Button>
+                <span className="text-center text-sm my-1">
+                  You don&apos;t have an account?{" "}
+                  <Link href="/signup" className="text-lightblue">
+                    Sign up
+                  </Link>
+                </span>
               </div>
-              <Button
-                className="w-full hover:scale-105 flex justify-center transition-all ease-in"
-                padding="18px"
-                type="submit"
-                disabled={loading}
-              >
-                {loading ? (
-                  <Image width={25} height={25} src={spinner} alt="loading" className="w-[25px]" />
-                ) : (
-                  <span>Sign up</span>
-                )}
-              </Button>
-              <Button onClick={handleSubmit} className=""></Button>
-              <span className="text-center text-sm my-1">
-                You don&apos;t have an account?{" "}
-                <Link href="/signup" className="text-lightblue">
-                  Sign up
-                </Link>
-              </span>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </Container>
   );

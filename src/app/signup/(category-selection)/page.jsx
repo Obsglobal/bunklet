@@ -4,6 +4,7 @@ import Link from "next/link";
 import Container from "../layout";
 import { setRole } from "@/features/roleSlice";
 import { useAppDispatch } from "@/lib/hooks";
+import Image from "next/image";
 
 const CategorySelection = () => {
   const [userRole, setUserRole] = useState("");
@@ -15,6 +16,10 @@ const CategorySelection = () => {
   };
   return (
     <Container>
+      <div className='flex flex-col w-5/6 mt-20'>
+      <Link href="/" className="absolute top-10 left-10">
+        <Image width={100} height={100} src="/obsglobal.png" className="md:w-[100px] w-[80px]" alt="logo" />
+      </Link>
       <div className="flex flex-col h-screen justify-center space-y-6 w-1/2 items-center">
         <Link
           href="/signup/form"
@@ -30,6 +35,7 @@ const CategorySelection = () => {
         >
           Landlord/Agent
         </Link>
+      </div>
       </div>
     </Container>
   );
