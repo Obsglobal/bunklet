@@ -18,8 +18,8 @@ const PropertyCard = ({ property }) => {
             {property.title}
           </span>
           <span className="flex items-center gap-1 text-xl">
-            <span className="font-medium md:text-[15px] text-sm">N{property.price} </span>{" "}
-            <span className="text-sm font-normal"> per annum</span>
+            <span className="font-medium text-sm">N{property.price} </span>{" "}
+            <span className="text-xs font-normal"> per annum</span>
           </span>
         </div>
         <div className="flex flex-col w-full ">

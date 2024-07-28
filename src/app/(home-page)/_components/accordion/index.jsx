@@ -5,13 +5,13 @@ import React from "react";
 const FAQS = () => {
   return (
     <div className="lg:px-24 px-2 py-10">
-      <span className="lg:text-[40px] md:text-2xl lg:px-0 px-6 text-lg font-semibold">
+      <span className="lg:text-2xl md:text-2xl lg:px-0 px-6 text-lg font-semibold">
         Frequently Asked Questions
       </span>
 
-      <div className="m-2 space-y-2">
+      <div className="space-y-2 pt-4">
         <details class="group text-darkgrey">
-          <summary class="flex cursor-pointer list-none items-center p-4 justify-between font-medium ">
+          <summary class="flex cursor-pointer list-none items-center pl-0 p-4 justify-between font-medium ">
             <span className="text-black md:text-[18px] font-medium text-left w-full">
               What are the process for booking an apartment?{" "}
             </span>
@@ -30,7 +30,7 @@ const FAQS = () => {
           </p>
         </details>
         <details class="group text-darkgrey">
-          <summary class="flex cursor-pointer list-none items-center p-4 justify-between font-medium ">
+          <summary class="flex cursor-pointer list-none items-center pl-0 p-4 justify-between font-medium ">
             <span className="text-black md:text-[18px] font-medium text-left w-full">
               What are the process for booking an apartment?
             </span>
@@ -49,7 +49,7 @@ const FAQS = () => {
           </p>
         </details>
         <details class="group text-darkgrey">
-          <summary class="flex cursor-pointer list-none items-center p-4 justify-between font-medium ">
+          <summary class="flex cursor-pointer list-none items-center pl-0 p-4 justify-between font-medium ">
             <span className="text-black md:text-[18px] font-medium text-left w-full">
               What are the process for booking an apartment?
             </span>
@@ -68,7 +68,7 @@ const FAQS = () => {
           </p>
         </details>
         <details class="group text-darkgrey">
-          <summary class="flex cursor-pointer list-none items-center p-4 justify-between font-medium ">
+          <summary class="flex cursor-pointer list-none items-center pl-0 p-4 justify-between font-medium ">
             <span className="text-black md:text-[18px] font-medium text-left w-full">
               What are the process for booking an apartment?
             </span>

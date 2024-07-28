@@ -115,7 +115,7 @@ const Features = () => {
                 </Button>
               </div>
               {showRequestForm && (
-                <div className="absolute shadow-2xl bg-white w-[500px] h-full z-20 top-[0%] bottom-0 right-[0%]">
+                <div className="absolute shadow-2xl bg-white w-[500px] h-full z-20 top-[0%] bottom-0 left-[-60%]">
                   <RequestForm
                     closeForm={closeRequestForm}
                     property={property}

@@ -5,16 +5,20 @@ import { Button } from "@/components/ui";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAppSelector } from "@/lib/hooks";
+import { spinner } from "@/constants/images";
+import Image from "next/image";
+import { toast } from "react-toastify";
 
 const SignupForm = () => {
+  const [loading, setLoading] = useState(false);
   const role = useAppSelector((state) => state.role.role);
-  const [confirmPassword, setConfirmPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState("");
   const { push } = useRouter();
   const [details, setDetails] = useState({
     first_name: "",
     email: "",
     password: "",
-    role: role
+    role: role,
   });
   const [errorState, setErrorState] = useState({
     firstnameError: "",
@@ -22,10 +26,10 @@ const SignupForm = () => {
     passwordError: "",
     confirmpasswordError: "",
   });
-  console.log(details)
+  // console.log(details);
   const handleConfimPassword = (e) => {
-    setConfirmPassword(e.target.value)
-  }
+    setConfirmPassword(e.target.value);
+  };
   const validate = () => {
     let isError = false;
     const errors = {
@@ -34,7 +38,7 @@ const SignupForm = () => {
       passwordError: "",
       confirmpasswordError: "",
     };
-     if (!details.first_name) {
+    if (!details.first_name) {
       isError = true;
       errors.firstnameError = "Please enter your first name";
     }
@@ -61,39 +65,42 @@ const SignupForm = () => {
     const error = validate();
 
     if (!error) {
+      setLoading(true);
       try {
-        // Make the API request here
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/accounts/sign-up/`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(details),
-        });
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/accounts/sign-up/`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(details),
+          }
+        );
 
         if (response.ok) {
           // Handle successful form submission
           push("/signin");
+          setLoading(false);
         } else {
           // Handle API errors
           console.error("API request failed:", response);
         }
       } catch (error) {
-        console.error("API request failed:", error);
+        toast.error("API request failed:", error);
       }
     }
   };
 
-
   return (
     <Container>
-      <div className="flex flex-col h-screen justify-center md:px-20 space-y-6 md:w-1/2 w-5/6 items-start">
+      <div className="flex flex-col h-[100%] justify-center md:px-20 space-y-6 md:w-1/2 w-5/6 items-start">
         <form onSubmit={handleSubmit} className="w-full">
           <div className="md:px-10">
-            <h1 className="text-center md:text-3xl font-semibold">Sign Up</h1>
-            <div className="flex flex-col gap-3">
+            <h1 className="text-center md:text-xl font-semibold">Sign Up</h1>
+            <div className="flex flex-col gap-y-1">
               <div className="flex flex-col gap-2">
-                <label htmlFor="first_name" className="md:text-[20px]">
+                <label htmlFor="first_name" className="md:text-base">
                   First Name
                 </label>
                 <input
@@ -101,15 +108,15 @@ const SignupForm = () => {
                   id="first_name"
                   name="first_name"
                   placeholder="Enter your first name"
-                  className="text-[#777272] font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
+                  className="text-[#777272] text-sm font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
                   onChange={handleForm}
                 />
-                 <span className="text-sm text-[#e62e2e]">
-                {errorState.firstnameError}
-              </span>
+                <span className="text-sm text-[#e62e2e]">
+                  {errorState.firstnameError}
+                </span>
               </div>
               <div className="flex flex-col gap-2">
-                <label htmlFor="email" className="md:text-[20px]">
+                <label htmlFor="email" className="md:text-base">
                   Email
                 </label>
                 <input
@@ -117,15 +124,15 @@ const SignupForm = () => {
                   id="email"
                   name="email"
                   placeholder="example@email.com"
-                  className="text-[#777272] font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
+                  className="text-[#777272] text-sm font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
                   onChange={handleForm}
                 />
-                 <span className="text-sm text-[#e62e2e]">
-                {errorState.emailError}
-              </span>
+                <span className="text-sm text-[#e62e2e]">
+                  {errorState.emailError}
+                </span>
               </div>
               <div className="flex flex-col gap-2">
-                <label htmlFor="password" className="md:text-[20px]">
+                <label htmlFor="password" className="md:text-base">
                   Password
                 </label>
                 <input
@@ -133,15 +140,15 @@ const SignupForm = () => {
                   id="password"
                   name="password"
                   placeholder="Enter password"
-                  className="text-[#777272] font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
+                  className="text-[#777272] text-sm font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
                   onChange={handleForm}
                 />
-                 <span className="text-sm text-[#e62e2e]">
-                {errorState.passwordError}
-              </span>
+                <span className="text-sm text-[#e62e2e]">
+                  {errorState.passwordError}
+                </span>
               </div>
               <div className="flex flex-col gap-2">
-                <label htmlFor="confrimpassword" className="md:text-[20px]">
+                <label htmlFor="confrimpassword" className="md:text-base">
                   Confirm password
                 </label>
                 <input
@@ -149,19 +156,31 @@ const SignupForm = () => {
                   id="confirmpassword"
                   name="confirmpassword"
                   placeholder="Confirm password"
-                  className="text-[#777272] font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
+                  className="text-[#777272] text-sm font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
                   onChange={handleConfimPassword}
-                /> <span className="text-sm text-[#e62e2e]">
-                {errorState.confirmpasswordError}
-              </span>
+                />{" "}
+                <span className="text-sm text-[#e62e2e]">
+                  {errorState.confirmpasswordError}
+                </span>
               </div>
-             
+
               <Button
-                className="w-full hover:scale-105 transition-all ease-in"
+                className="w-full hover:scale-105 flex justify-center transition-all ease-in"
                 padding="18px"
-                type='submit'
+                type="submit"
+                disabled={loading}
               >
-                Sign Up
+                {loading ? (
+                  <Image
+                    width={25}
+                    height={25}
+                    src={spinner}
+                    alt="loading"
+                    className="w-[25px]"
+                  />
+                ) : (
+                  <span>Sign up</span>
+                )}
               </Button>
               <span className="text-center">
                 Already have an account?{" "}
