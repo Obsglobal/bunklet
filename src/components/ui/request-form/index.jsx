@@ -31,8 +31,8 @@ const RequestForm = ({ property, closeForm }) => {
             <span>{property?.location}</span>
             <span className="text-[#EE6C43]">{property?.price}</span>
             <div className="flex justify-between space-x-2">
-              {property?.details.map((detail) => (
-                <span className="shadow-xl p-1">{detail}</span>
+              {property?.details.map((detail, i) => (
+                <span className="shadow-xl p-1" key={i}>{detail}</span>
               ))}
             </div>
           </div>
