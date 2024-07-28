@@ -77,7 +77,7 @@ const SigninForm = () => {
 
   return (
     <Container>
-      <div className="flex flex-col w-5/6 mt-20">
+      <div className="flex flex-col justify-center items-center md:items-start md:justify-start w-5/6 md:mt-20">
       <Link href="/" className=" absolute top-10 left-10">
           <Image
             width={100}
@@ -87,13 +87,13 @@ const SigninForm = () => {
             alt="logo"
           />
         </Link>
-        <div className="flex flex-col h-[70vh] justify-center md:px-20 space-y-6 md:w-1/2 w-5/6 items-start">
+        <div className="flex flex-col h-[70vh] md:mt-10 justify-center space-y-6 md:w-1/2 w-5/6 items-start">
           <form onClick={handleSubmit} className="w-full">
             <div className="md:px-10">
               <h1 className="text-center md:text-xl font-semibold">Sign In</h1>
               <div className="flex flex-col">
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="email" className="md:text-base">
+                  <label htmlFor="email" className="lg:text-base text-sm">
                     Email
                   </label>
                   <input
@@ -101,7 +101,7 @@ const SigninForm = () => {
                     id="email"
                     name="email"
                     placeholder="example@email.com"
-                    className="text-[#777272] text-sm font-medium outline-none border-2 border-[#bebbbb] py-4 px-3"
+                    className="text-[#777272] text-sm lg:text-base font-medium outline-none border-2 border-[#bebbbb] py-2 px-3"
                     onChange={handleForm}
                   />
                   <span className="text-sm text-[#e62e2e]">
@@ -109,7 +109,7 @@ const SigninForm = () => {
                   </span>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="password" className="md:text-base">
+                  <label htmlFor="password" className="lg:text-base text-sm">
                     Password
                   </label>
                   <input
@@ -117,7 +117,7 @@ const SigninForm = () => {
                     id="password"
                     name="password"
                     placeholder="Enter password"
-                    className="text-[#777272] text-sm font-mmedium outline-none border-2 border-[#bebbbb] py-4 px-3"
+                    className="text-[#777272] text-sm lg:text-base font-medium outline-none border-2 border-[#bebbbb] py-2 px-3"
                     onChange={handleForm}
                   />
                   <span className="text-sm text-[#e62e2e]">
@@ -127,14 +127,14 @@ const SigninForm = () => {
                 <div className="ml-auto">
                   <Link
                     href="/signin/forgot-password"
-                    className="text-lightblue text-sm my-1"
+                    className="text-lightblue text-sm lg:text-base my-1"
                   >
                     Forgot Password?
                   </Link>
                 </div>
                 <Button
                   className="w-full hover:scale-105 flex justify-center transition-all ease-in"
-                  padding="18px"
+                  padding="10px"
                   type="submit"
                   disabled={loading}
                 >
@@ -147,11 +147,11 @@ const SigninForm = () => {
                       className="w-[25px]"
                     />
                   ) : (
-                    <span>Sign up</span>
+                    <span>Sign in</span>
                   )}
                 </Button>
                 <Button onClick={handleSubmit} className=""></Button>
-                <span className="text-center text-sm my-1">
+                <span className="text-center text-sm lg:text-base  my-1">
                   You don&apos;t have an account?{" "}
                   <Link href="/signup" className="text-lightblue">
                     Sign up

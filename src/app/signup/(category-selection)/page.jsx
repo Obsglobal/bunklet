@@ -16,24 +16,24 @@ const CategorySelection = () => {
   };
   return (
     <Container>
-      <div className='flex flex-col w-5/6 mt-20'>
+      <div className="flex flex-col justify-center items-center md:items-start md:justify-start w-5/6">
       <Link href="/" className="absolute top-10 left-10">
         <Image width={100} height={100} src="/obsglobal.png" className="md:w-[100px] w-[80px]" alt="logo" />
       </Link>
-      <div className="flex flex-col h-screen justify-center space-y-6 w-1/2 items-center">
+      <div className="flex flex-col h-[100vh] overflow-hidden justify-center space-y-6 w-1/2 items-center">
         <Link
           href="/signup/form"
           onClick={() => handleRole("user")}
-          className="hover:bg-lightblue border border-[#4361EE] text-lightblue transition-all ease-in hover:text-primary w-full px-4 md:w-[40%] py-4 md:text-lg font-open_sans rounded-[5px] text-center"
+          className="hover:bg-lightblue border border-[#4361EE] text-lightblue transition-all ease-in hover:text-primary w-full px-4 md:w-[170px] py-4 md:text-lg font-open_sans rounded-[5px] text-center"
         >
           User
         </Link>
         <Link
           href="/signup/form"
           onClick={() => handleRole("agent")}
-          className="hover:bg-lightblue border border-[#4361EE] text-lightblue transition-all ease-in hover:text-primary w-full px-4 md:w-[40%] py-4 md:text-lg font-open_sans rounded-[5px] text-center"
+          className="hover:bg-lightblue border border-[#4361EE] text-lightblue transition-all ease-in hover:text-primary w-full px-4 md:w-[170px] py-4 md:text-lg font-open_sans rounded-[5px] text-center"
         >
-          Landlord/Agent
+          Landlord / Agent
         </Link>
       </div>
       </div>

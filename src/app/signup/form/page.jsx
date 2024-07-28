@@ -94,7 +94,7 @@ const SignupForm = () => {
 
   return (
     <Container>
-      <div className="flex flex-col relative w-5/6 ">
+      <div className="flex flex-col justify-center items-center md:items-start md:justify-start w-5/6">
         <Link href="/" className=" absolute top-10 left-10">
           <Image
             width={100}
@@ -104,13 +104,13 @@ const SignupForm = () => {
             alt="logo"
           />
         </Link>
-        <div className="flex flex-col h-[120vh] mt-20 justify-center md:px-20 space-y-6 md:w-1/2 w-5/6 items-start">
+        <div className="flex flex-col h-[120vh] md:mt-10 justify-center space-y-6 md:w-1/2 w-5/6 items-start">
           <form onSubmit={handleSubmit} className="w-full">
             <div className="md:px-10">
               <h1 className="text-center md:text-xl font-semibold">Sign Up</h1>
               <div className="flex flex-col gap-y-1">
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="first_name" className="md:text-base">
+                  <label htmlFor="first_name" className="lg:text-base md:text-sm">
                     First Name
                   </label>
                   <input
@@ -118,7 +118,7 @@ const SignupForm = () => {
                     id="first_name"
                     name="first_name"
                     placeholder="Enter your first name"
-                    className="text-[#777272] text-sm font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
+                    className="text-[#777272] text-base font-medium outline-none border-2 border-[#bebbbb] py-2 px-3"
                     onChange={handleForm}
                   />
                   <span className="text-sm text-[#e62e2e]">
@@ -126,7 +126,7 @@ const SignupForm = () => {
                   </span>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="email" className="md:text-base">
+                  <label htmlFor="email" className="lg:text-base md:text-sm">
                     Email
                   </label>
                   <input
@@ -134,7 +134,7 @@ const SignupForm = () => {
                     id="email"
                     name="email"
                     placeholder="example@email.com"
-                    className="text-[#777272] text-sm font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
+                    className="text-[#777272] text-base font-medium outline-none border-2 border-[#bebbbb] py-2 px-3"
                     onChange={handleForm}
                   />
                   <span className="text-sm text-[#e62e2e]">
@@ -142,7 +142,7 @@ const SignupForm = () => {
                   </span>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="password" className="md:text-base">
+                  <label htmlFor="password" className="lg:text-base md:text-sm">
                     Password
                   </label>
                   <input
@@ -150,7 +150,7 @@ const SignupForm = () => {
                     id="password"
                     name="password"
                     placeholder="Enter password"
-                    className="text-[#777272] text-sm font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
+                    className="text-[#777272] text-base font-medium outline-none border-2 border-[#bebbbb] py-2 px-3"
                     onChange={handleForm}
                   />
                   <span className="text-sm text-[#e62e2e]">
@@ -158,7 +158,7 @@ const SignupForm = () => {
                   </span>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="confrimpassword" className="md:text-base">
+                  <label htmlFor="confrimpassword" className="lg:text-base md:text-sm">
                     Confirm password
                   </label>
                   <input
@@ -166,7 +166,7 @@ const SignupForm = () => {
                     id="confirmpassword"
                     name="confirmpassword"
                     placeholder="Confirm password"
-                    className="text-[#777272] text-sm font-semibold outline-none border-2 border-[#bebbbb] py-4 px-3"
+                    className="text-[#777272] text-base font-medium outline-none border-2 border-[#bebbbb] py-2 px-3"
                     onChange={handleConfimPassword}
                   />{" "}
                   <span className="text-sm text-[#e62e2e]">
@@ -176,7 +176,7 @@ const SignupForm = () => {
 
                 <Button
                   className="w-full hover:scale-105 flex justify-center transition-all ease-in"
-                  padding="18px"
+                  padding="10px"
                   type="submit"
                   disabled={loading}
                 >
@@ -192,7 +192,7 @@ const SignupForm = () => {
                     <span>Sign up</span>
                   )}
                 </Button>
-                <span className="text-center">
+                <span className="text-center text-sm">
                   Already have an account?{" "}
                   <Link href="/signin" className="text-lightblue">
                     Sign in
