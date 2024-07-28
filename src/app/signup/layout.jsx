@@ -5,11 +5,12 @@ import StoreProvider from "../StoreProvider";
 const Container = ({children}) => {
   return (
     <StoreProvider>
-    <div className="overflow-hidden w-full">
-      <Link href='/' className="fixed top-0 py-8 px-10">
-        <img src="/obsglobal.png" className="md:w-[150px] w-[100px]" alt="logo" />
+    <div className="overflow-hidden flex flex-col w-full">
+      <Link href='/' className="ml-10 py-4">
+        <img src="/obsglobal.png" className="md:w-[100px] w-[80px]" alt="logo" />
       </Link>
-      <div className="flex justify-center md:justify-start items-center md:items-start h-screen md:h-full w-full">
+      <div className="flex justify-center md:justify-start items-center md:items-start h-[120vh] overflow-auto
+       md:h-full w-full">
       {children}
         <div
           style={{ backgroundImage: 'url("/signup.svg")' }}

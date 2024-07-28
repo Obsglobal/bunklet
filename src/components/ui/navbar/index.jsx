@@ -14,7 +14,7 @@ const Navbar = () => {
           <img
             src="/obsglobal.png"
             alt="logo"
-            className="lg:w-full w-24"
+            className="lg:w-3/4 w-24"
           />
         </Link>
         <div className="lg:flex hidden w-full md:px-0 px-6 xl:px-4 justify-center items-center md:ml-12 font-medium text-[#1f22b8] text-lg space-x-10">

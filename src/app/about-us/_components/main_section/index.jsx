@@ -6,8 +6,8 @@ const MainSection = () => {
   return (
     <div className="xl:px-24 px-6 py-10">
       <div className="flex flex-col">
-        <span className="font-semibold md:text-xl text-lg lg:text-2xl">What Is OBXGLOBAL</span>
-        <span className="font-normal md:text-base text-sm lg:text-xl">
+        <span className="font-semibold md:text-xl text-lg lg:text-xl">What Is OBXGLOBAL</span>
+        <span className="font-normal md:text-sm text-sm lg:text-xl">
           orem ipsum dolor sit amet consectetur. Turpis magna lorem et ut ut
           accumsan. Est felis ultrices risus ante ultricies nisi diam adipiscing
           erat. Quis elementum suspendisse semper et ut. Dictumst urna semper
@@ -30,14 +30,14 @@ const MainSection = () => {
       </div>
 
       <div className="flex flex-col py-10">
-        <span className="font-semibold md:text-xl text-base lg:text-2xl">How we can help you</span>
+        <span className="font-semibold md:text-xl text-base lg:text-xl">How we can help you</span>
         <div className="flex lg:flex-row flex-col items-center py-6 gap-3">
           <div className="flex flex-col gap-2 border border-[#D8D8D8] min-h-[160px] px-3 py-4">
             <div className="flex gap-2 items-center">
               <Image width={30} src={home} alt="landord" />
               <span className="md:text-xl text-base lg:text-2xl">Landord</span>
             </div>
-            <span className="text-darkgrey text-sm md:text-lg">
+            <span className="text-darkgrey text-sm md:text-base">
               We will rent your apartment to verified tenants, most of which are
               managers, IT freelancers, Business owners, Entrepreneurs,
               Students, Lecturers, Traders, Doctors, Lawyers, job starters and
