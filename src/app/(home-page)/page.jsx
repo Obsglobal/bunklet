@@ -17,7 +17,7 @@ const HomePage = () => {
       <AboutUs />
       <FeaturedListing />
       <PopularListing />
-      <NewListing />
+      {/* <NewListing /> */}
       <FAQS />
       <Footer />
     </>

@@ -5,7 +5,10 @@ import React from "react";
 
 const NewListing = () => {
   return (
-    <div className="lg:px-24 px-6 py-10">
+    <div className="lg:px-24 px-6 py-10 flex flex-col">
+      <span className="uppercase text-lightblue bg-[#f8f9fe] px-2 py-1 w-fit ">
+           top picks
+          </span>
       <span className="lg:text-3xl md:text-2xl text-lg font-semibold">New Listing</span>
       <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 py-4 gap-8">
         {newProperties.map((property) => (
