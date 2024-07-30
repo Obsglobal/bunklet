@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 import React from "react";
 
 const Footer = () => {
@@ -9,9 +11,8 @@ const Footer = () => {
           <div className="flex w-full lg:w-[30%] gap-2 flex-col">
             <span className="uppercase font-normal text-xl">bunklet</span>
             <span className="font-medium text-sm lg:text-base">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              ornare cursus sed nunc eget dictum Sed ornare cursus sed nunc eget
-              dictumd nunc eget dictum Sed ornare cursus sed nunc eget dictum .
+              Enjoy lifestyle amenities designed to provide every homeowners
+              modern comfort,
             </span>
           </div>
           <div className="flex flex-col font-medium gap-2 items-start">
@@ -31,20 +32,27 @@ const Footer = () => {
               <Link href="/">Terms and Conditions</Link>
               <Link href="/for-sale">Privacy Policy</Link>
               <Link href="/for-rent">Contact Us</Link>
-             
             </div>
           </div>
           <div className="flex flex-col font-medium gap-2 items-start">
             <span className="text-xl">Our Socials</span>
-            <div className="flex text-sm gap-y-3 items-start">
-              <Link href="/">Facebook</Link>
-              <Link href="/">Instagram</Link>
-              <Link href="/">X</Link>
+            <div className="flex text-sm gap-x-3 items-start">
+              <Link href="/">
+                <FaXTwitter color="#fff" size={25} />
+              </Link>
+              <Link href="/">
+                <FaInstagram color="#fff" size={25} />
+              </Link>
+              <Link href="/">
+                <FaFacebook color="#fff" size={25} />
+              </Link>
             </div>
           </div>
         </div>
       </div>
-      <span className="px-7 md:px-6 text-sm lg:px-24">Copyright @BUNKLET 2024</span>
+      <span className="px-7 md:px-6 text-sm lg:px-24">
+        Copyright @BUNKLET 2024
+      </span>
     </div>
   );
 };
