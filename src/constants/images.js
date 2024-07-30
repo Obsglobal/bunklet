@@ -10,3 +10,5 @@ export { default as arrowleft } from "../assets/images/arrow-square-left.svg";
 export { default as home } from "../assets/images/home.png";
 export { default as tickcircle} from "../assets/images/tick-circle.png";
 export { default as spinner} from "../assets/images/spinner.svg";
+export { default as profile} from "../assets/images/profile.png";
+export { default as filter} from "../assets/images/filter.png";

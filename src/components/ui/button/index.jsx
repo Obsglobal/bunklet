@@ -53,7 +53,7 @@ Button.defaultProps = {
   textColor: "#ffffff",
   borderRadius: "6px",
   height: "100%",
-  // padding: '6px 20px',
+  padding: '6px 20px',
   width: "",
 };
 

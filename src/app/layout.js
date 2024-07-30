@@ -5,7 +5,7 @@ import "./globals.css";
 const OpenSans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Obsglobal",
+  title: "Bunklet",
   description: "The Number One Real Estate Company",
 };
 
