@@ -51,17 +51,15 @@ const PropertyCard = ({ property }) => {
               </div>
             </div>
             <div className="pt-5">
-              <span className="flex flex-col items-start gap-1">
+              <div className="flex flex-col items-start gap-1">
                 <span className="font-semibold text-lightgray lg:text-lg">Price per annum</span>
                 <div className="flex w-full justify-between items-end">
                   <span className="font-semibold text-secondary lg:text-xl">
                     N{property.price}{" "}
                   </span>
-                  <Link href={"/about-us"} className="px-2 w-fit text-primary">
                     <Button className="font-medium">View details</Button>
-                  </Link>
                 </div>
-              </span>
+              </div>
             </div>
           </div>
         </div>
