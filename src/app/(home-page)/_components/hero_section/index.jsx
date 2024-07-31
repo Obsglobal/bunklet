@@ -28,7 +28,7 @@ const HeroSection = () => {
                 Real <span className="text-secondary">Estate</span> At Your
                 Finger Tips
               </span>
-              <div class />
+              {/* <div class /> */}
               <span className="lg:text-xl font-medium">
                 Explore our range of beautiful properties with the addition of
                 seperate accomodation suitable for you
