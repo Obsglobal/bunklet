@@ -20,7 +20,7 @@ const ChooseUsSection = () => {
           </span>
           <span className="text-lightgray md:text-base text-sm">
             Enjoy lifestyle amenities designed to provide every homeowners
-            modern comfort, a stone's throw away from schools, churches, and
+            modern comfort, a stone throw away from schools, churches, and
             hospitals.
           </span>
         </div>
@@ -31,7 +31,7 @@ const ChooseUsSection = () => {
           </span>
           <span className="text-lightgray md:text-base text-sm">
             Enjoy lifestyle amenities designed to provide every homeowners
-            modern comfort, a stone's throw away from schools, churches, and
+            modern comfort, a stone throw away from schools, churches, and
             hospitals.
           </span>
         </div>
@@ -42,7 +42,7 @@ const ChooseUsSection = () => {
           </span>
           <span className="text-lightgray md:text-base text-sm">
             Enjoy lifestyle amenities designed to provide every homeowners
-            modern comfort, a stone's throw away from schools, churches, and
+            modern comfort, a stone throw away from schools, churches, and
             hospitals.
           </span>
         </div>
