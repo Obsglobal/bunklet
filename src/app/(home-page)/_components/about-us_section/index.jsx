@@ -6,7 +6,7 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <div className="lg:px-24 px-6 mt-[15rem] md:mt-[20rem] lg:mt-[30rem]">
+    <div className="lg:px-24 px-6 mb-40 mt-[15rem] md:mt-[20rem] lg:mt-[30rem]">
       <div className="flex md:flex-row flex-col items-center md:gap-16 lg:gap-0 justify-between w-full">
         <div className="flex flex-col w-full lg:w-[40%] space-y-4">
           <span className="uppercase text-lightblue bg-[#f8f9fe] px-2 py-1 w-fit ">
