@@ -12,3 +12,8 @@ export { default as tickcircle} from "../assets/images/tick-circle.png";
 export { default as spinner} from "../assets/images/spinner.svg";
 export { default as profile} from "../assets/images/profile.png";
 export { default as filter} from "../assets/images/filter.png";
+export { default as star} from "../assets/images/stars.png";
+export { default as cash} from "../assets/images/cash.png";
+export { default as lock} from "../assets/images/lock.png";
+export { default as humidifier} from "../assets/images/humidifier.png";
+export { default as love} from "../assets/images/love.png";

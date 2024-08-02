@@ -3,7 +3,7 @@ import { Urbanist } from 'next/font/google'
 import { Button } from "@/components/ui";
 import { IoSearch } from "react-icons/io5";
 import React, { useState } from "react";
-import PropertyFilter from "../property-filter";
+import PropertyFilter from "../../../../components/ui/property-filter";
 import Image from "next/image";
 import { filter } from "@/constants/images";
 const urbanist = Urbanist({ subsets: ["latin"],  weight: ["400", "500", "600", "700"], });
@@ -18,10 +18,10 @@ const HeroSection = () => {
   return (
     <>
       <div
-        className={`overflow-hidden xl:p-36 p-10 md:p-20 relative bg-center h-[40rem] md:h-[60rem] bg-no-repeat bg-cover md:pb-0 xl:pb-0 ${urbanist.className}`}
-        style={{ backgroundImage: 'url("/bg.png")' }}
+        className={`overflow-hidden brightness-90 xl:p-36 p-10 md:p-20 relative bg-center h-[40rem] md:h-[60rem] bg-no-repeat bg-cover md:pb-0 xl:pb-0 ${urbanist.className}`}
+        style={{ backgroundImage: 'url("/hero.svg")' }}
       >
-        <div className="mt-4 container md:container z- absolute z-50">
+        <div className="mt-4 container md:container absolute z-50">
           <div className="flex items-start justify-start flex-col space-y-20 md:space-y-40 pt-40 w-5/6 lg:w-full">
             <div className="flex flex-col gap-y-6 lg:gap-y-16 text-primary">
               <span className="text-2xl md:text-3xl xl:text-6xl w-[100%] uppercase font-semibold ">
@@ -64,7 +64,7 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
-        <div className='bg-primary bg-opacity-30 z-20 left-0 right-0 top-0 lg:h-[60rem] absolute' />
+        <div className='bg-primary bg-opacity-20 z-20 left-0 right-0 top-0 lg:h-[60rem] absolute' />
       </div>
     </>
   );
