@@ -17,3 +17,8 @@ export { default as cash} from "../assets/images/cash.png";
 export { default as lock} from "../assets/images/lock.png";
 export { default as humidifier} from "../assets/images/humidifier.png";
 export { default as love} from "../assets/images/love.png";
+export { default as estate} from "../assets/images/estate.png";
+export { default as bed} from "../assets/images/bed.png";
+export { default as locate} from "../assets/images/locate.png";
+export { default as expand} from "../assets/images/expand.png";
+export { default as price} from "../assets/images/price.png";

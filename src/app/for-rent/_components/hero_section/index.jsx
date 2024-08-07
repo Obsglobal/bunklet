@@ -46,7 +46,7 @@ const HeroSection = () => {
           <img src="/rentbg.svg" alt="bg" className="lg:w-[600px] md:w-[300px] w-[250px]" />
         </div>
 
-        <div className="absolute bottom-0 right-0 left-0 mx-auto w-3/4"><Filter /> </div>
+        <div className="absolute bottom-[-4.8rem] right-0 left-0 mx-auto w-3/4"><Filter /> </div>
       </div>
     </div>
   );

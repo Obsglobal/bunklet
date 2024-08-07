@@ -59,11 +59,9 @@ const PropertyCard = ({ property }) => {
                   <span className="font-semibold text-secondary lg:text-xl">
                     N{property.price}{" "}
                   </span>
-                  <div className="flex items-center text-lightblue bg-[#f8f9fe] w-fit">
-                    <span className="capitalize px-2 my-2 py-1 w-fit ">
-                      View all properties
-                    </span>
-                  </div>
+                  <Link href={`/property-details/${property.id}`}>
+                  <Button>View details</Button>
+                  </Link>
                 </div>
               </div>
             </div>

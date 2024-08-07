@@ -17,14 +17,12 @@ const NewListing = () => {
       </span>
       <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 py-4 gap-8">
         {newProperties.map((property) => (
-          <Link href={`/property-details/${property.id}`} key={property.id}>
             <PropertyCard property={property} />
-          </Link>
         ))}
       </div>
       <div className="flex justify-end py-3">
         <Link href="featured-properties" className="text-xl text-secondary">
-          View more
+        View All Properties
         </Link>
       </div>
     </div>

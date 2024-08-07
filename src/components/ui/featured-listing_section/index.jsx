@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const FeaturedListing = () => {
   return (
-    <div className="lg:px-24 flex flex-col px-6 py-10 mb-24">
+    <div className="lg:px-24 flex flex-col px-6 py-10 my-24">
       <span className="uppercase text-lightblue bg-[#f8f9fe] px-2 py-1 my-2 w-fit ">
         top picks
       </span>
@@ -14,14 +14,14 @@ const FeaturedListing = () => {
       </span>
       <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 py-4">
         {featuredProperties.map((property) => (
-          <Link href={`/property-details/${property.id}`} key={property.id}>
+          
             <PropertyCard property={property} />
-          </Link>
+          
         ))}
       </div>
       <div className="flex justify-end py-3">
         <Link href="/featured-properties" className="text-xl text-secondary">
-          View more
+          View All Properties
         </Link>
       </div>
     </div>
