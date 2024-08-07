@@ -15,7 +15,7 @@ const FeaturedListing = () => {
       <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 py-4">
         {featuredProperties.map((property) => (
           
-            <PropertyCard property={property} />
+            <PropertyCard property={property} key={property.id} />
           
         ))}
       </div>

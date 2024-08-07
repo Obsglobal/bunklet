@@ -17,7 +17,7 @@ const PopularListing = () => {
       </span>
       <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 py-4 gap-8">
         {popularProperties.map((property) => (
-            <PropertyCard property={property} />
+            <PropertyCard property={property} key={property.id}  />
         ))}
       </div>
       <div className="flex justify-end py-3">
