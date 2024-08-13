@@ -1,12 +1,19 @@
-import { eventSlice } from "@/features/eventSlice";
-import { roleSlice } from "@/features/roleSlice";
+import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
+import authSlice from "@/features/auth";
+import eventSlice from "@/features/eventSlice";
+import roleSlice from "@/features/roleSlice";
 
-export const store = () => {
-  return configureStore({
-    reducer: {
-      role: roleSlice.reducer,
-      eventSlice: eventSlice.reducer,
-    },
-  });
-};
+const rootReducer = combineReducers({
+  role: roleSlice,
+  event: eventSlice,
+  auth: authSlice,
+});
+
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }),
+});
+
+export default store;

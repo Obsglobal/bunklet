@@ -4,7 +4,6 @@ import React, { useState } from "react";
 
 const PropertyFilter = () => {
     const [showFilter, setShowFilter] = useState(false);
-
     const handleToggleFilter = () => {
       setShowFilter(!showFilter);
     };
