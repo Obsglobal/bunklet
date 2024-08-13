@@ -3,8 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   showConatctForm: false,
 };
+
 export const eventSlice = createSlice({
-  name: "role",
+  name: "event", 
   initialState: initialState,
   reducers: {
     setShowConatctForm: (state, action) => {
@@ -14,3 +15,5 @@ export const eventSlice = createSlice({
 });
 
 export const { setShowConatctForm } = eventSlice.actions;
+
+export default eventSlice.reducer; 

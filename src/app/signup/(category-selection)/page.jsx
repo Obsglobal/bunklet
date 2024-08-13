@@ -4,11 +4,8 @@ import Link from "next/link";
 import Container from "../layout";
 import { setRole } from "@/features/roleSlice";
 import { useAppDispatch } from "@/lib/hooks";
-import Image from "next/image";
 
 const CategorySelection = () => {
-  const [userRole, setUserRole] = useState("");
-
   const dispatch = useAppDispatch();
 
   const handleRole = (value) => {
@@ -17,9 +14,9 @@ const CategorySelection = () => {
   return (
     <Container>
       <div className="flex flex-col justify-center items-center md:items-start md:justify-start w-5/6">
-      <Link href="/" className="absolute top-10 left-10">
-        <Image width={100} height={100} src="/obsglobal.png" className="md:w-[100px] w-[80px]" alt="logo" />
-      </Link>
+      <Link href="/" className="uppercase text-[#2D419F] text-2xl font-bold absolute top-10 left-10">
+          Bunklet       
+        </Link>
       <div className="flex flex-col h-[100vh] overflow-hidden justify-center space-y-6 w-1/2 items-center">
         <Link
           href="/signup/form"

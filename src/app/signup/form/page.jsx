@@ -26,7 +26,6 @@ const SignupForm = () => {
     passwordError: "",
     confirmpasswordError: "",
   });
-  // console.log(details);
   const handleConfimPassword = (e) => {
     setConfirmPassword(e.target.value);
   };
@@ -77,17 +76,16 @@ const SignupForm = () => {
             body: JSON.stringify(details),
           }
         );
-
         if (response.ok) {
-          // Handle successful form submission
+          toast.success("Successfully signed up, please verify your email to sign in");
           push("/signin");
           setLoading(false);
         } else {
-          // Handle API errors
+          toast.error("Failed to sign up");
           console.error("API request failed:", response);
         }
       } catch (error) {
-        toast.error("API request failed:", error);
+        toast.error("Failed to sign up");
       }
     }
   };
@@ -95,14 +93,9 @@ const SignupForm = () => {
   return (
     <Container>
       <div className="flex flex-col justify-center items-center md:items-start md:justify-start w-5/6">
-        <Link href="/" className=" absolute top-10 left-10">
-          <Image
-            width={100}
-            height={100}
-            src="/obsglobal.png"
-            className="md:w-[100px] w-[80px]"
-            alt="logo"
-          />
+        <Link href="/" className="uppercase text-[#2D419F] text-2xl font-bold absolute top-10 left-10">
+          Bunklet
+       
         </Link>
         <div className="flex flex-col h-[120vh] md:mt-10 justify-center space-y-6 md:w-1/2 w-5/6 items-start">
           <form onSubmit={handleSubmit} className="w-full">

@@ -1,6 +1,7 @@
 import { Open_Sans } from "next/font/google";
-import { ToastContainer } from "react-toastify";
 import "./globals.css";
+import StoreProvider from "./StoreProvider";
+
 
 const OpenSans = Open_Sans({ subsets: ["latin"] });
 
@@ -12,8 +13,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={OpenSans.className}>{children}</body>
-      <ToastContainer position="bottom-right" />
+      <StoreProvider>
+        <body className={OpenSans.className}>{children}</body>        
+      </StoreProvider>
     </html>
   );
 }

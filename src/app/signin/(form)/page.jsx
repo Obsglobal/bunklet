@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { spinner } from "@/constants/images";
 import Image from "next/image";
+import { toast } from "react-toastify";
 
 const SigninForm = () => {
   const [loading, setLoading] = useState(false);
@@ -48,7 +49,6 @@ const SigninForm = () => {
     if (!error) {
       setLoading(true);
       try {
-        // Make the API request here
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/accounts/sign-in/`,
           {
@@ -60,17 +60,31 @@ const SigninForm = () => {
             body: JSON.stringify(details),
           }
         );
+        console.log(response.status);
 
         if (response.ok) {
-          // Handle successful form submission
+          const data = await response.json();
+          const token = data.access_token;
+          const profile = data.profile;
+          localStorage.setItem("user", JSON.stringify(profile));
+          localStorage.setItem("accessToken", token);
+          toast.success("Sign in successfull, redirecting to dashboard");
           setLoading(false);
-          push("/");
+          push("/dashboard");
         } else {
-          // Handle API errors
-          console.error("API request failed:", response);
+          if (response.status === 400) {
+            toast.error("Invalid email or password");
+          } else if (response.status === 403) {
+            toast.error("No matching user found");
+          } else if (response.status === 403) {
+            toast.error("Please try again later");
+          } else {
+            toast.error("Error in signing in");
+          }
+          setLoading(false);
         }
       } catch (error) {
-        console.error("API request failed:", error);
+        console.log(error);
       }
     }
   };
@@ -78,17 +92,14 @@ const SigninForm = () => {
   return (
     <Container>
       <div className="flex flex-col justify-center items-center md:items-start md:justify-start w-5/6 md:mt-20">
-      <Link href="/" className=" absolute top-10 left-10">
-          <Image
-            width={100}
-            height={100}
-            src="/obsglobal.png"
-            className="md:w-[100px] w-[80px]"
-            alt="logo"
-          />
+        <Link
+          href="/"
+          className="uppercase text-[#2D419F] text-2xl font-bold absolute top-10 left-10"
+        >
+          Bunklet
         </Link>
         <div className="flex flex-col h-[70vh] md:mt-10 justify-center space-y-6 md:w-1/2 w-5/6 items-start">
-          <form onClick={handleSubmit} className="w-full">
+          <form onSubmit={handleSubmit} className="w-full">
             <div className="md:px-10">
               <h1 className="text-center md:text-xl font-semibold">Sign In</h1>
               <div className="flex flex-col">
@@ -150,7 +161,6 @@ const SigninForm = () => {
                     <span>Sign in</span>
                   )}
                 </Button>
-                <Button onClick={handleSubmit} className=""></Button>
                 <span className="text-center text-sm lg:text-base  my-1">
                   You don&apos;t have an account?{" "}
                   <Link href="/signup" className="text-lightblue">
