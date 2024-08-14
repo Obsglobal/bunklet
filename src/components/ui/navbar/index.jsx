@@ -24,7 +24,7 @@ const Navbar = () => {
         </div>
         <div className="flex pl-3">
           <Link
-            href="/signup"
+            href="/signin"
             className="items-center w-full text-nowrap md:gap-x-6 text-[#4361EE] hidden lg:flex mx-0"
           >
             <Image

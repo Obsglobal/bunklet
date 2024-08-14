@@ -1,19 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  showConatctForm: false,
+  propertyFilter: null
 };
 
 export const eventSlice = createSlice({
   name: "event", 
   initialState: initialState,
   reducers: {
-    setShowConatctForm: (state, action) => {
-      state.showConatctForm = action.payload;
+    setPropertyFilter: (state, action) => {
+      state.propertyFilter = action.payload;
     },
   },
 });
 
-export const { setShowConatctForm } = eventSlice.actions;
+export const { setPropertyFilter } = eventSlice.actions;
 
 export default eventSlice.reducer; 
