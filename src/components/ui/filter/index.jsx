@@ -42,22 +42,27 @@ const Filter = () => {
   };
   const handleLocationChange = (value) => {
     setFilterValue((prevState) => ({ ...prevState, location: value }));
+    setOpenLocation(false)
   };
 
   const handlePropertyChange = (value) => {
     setFilterValue((prevState) => ({ ...prevState, property: value }));
+    setOpenProperty(false)
   };
 
   const handleBedroomChange = (value) => {
     setFilterValue((prevState) => ({ ...prevState, bedroom: value }));
+    setOpenBedroom(false)
   };
 
   const handleMinPriceChange = (value) => {
     setFilterValue((prevState) => ({ ...prevState, minPrice: value }));
+    setOpenMinPrice(false)
   };
 
   const handleMaxPriceChange = (value) => {
     setFilterValue((prevState) => ({ ...prevState, maxPrice: value }));
+    setOpenMaxPrice(false)
   };
   const filterString = Object.values(filterValue)
     .filter((value) => value !== "")
