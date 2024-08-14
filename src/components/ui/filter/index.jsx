@@ -12,12 +12,15 @@ import {
   minPriceFilter,
   propertyFilter,
 } from "@/constants";
+import { useDispatch } from "react-redux";
+import { setPropertyFilter } from "@/features/eventSlice";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
 const Filter = () => {
+  const dispatch = useDispatch();
   const [openLocation, setOpenLocation] = useState(false);
   const [openProperty, setOpenProperty] = useState(false);
   const [openBedroom, setOpenBedroom] = useState(false);
@@ -31,6 +34,12 @@ const Filter = () => {
     maxPrice: "",
   });
 
+  const handleSearch = () => {
+    if (Object.values(filterValue).every((value) => value === "")) {
+      return;
+    }
+    dispatch(setPropertyFilter(filterValue));
+  };
   const handleLocationChange = (value) => {
     setFilterValue((prevState) => ({ ...prevState, location: value }));
   };
@@ -70,6 +79,7 @@ const Filter = () => {
               className={
                 "md:p-2 py-2 w-fit text-nowrap flex items-center gap-x-2 justify-center text-sm font-medium md:text-xl"
               }
+              onClick={handleSearch}
             >
               <IoSearch />
               <span>Find property</span>
@@ -217,7 +227,7 @@ const Filter = () => {
                       >
                         <span
                           className="cursor-pointer"
-                          onClick={() => handleMinPriceChange(value.price)}
+                          onClick={() => handleMinPriceChange(value.value)}
                         >
                           {value.price}
                         </span>
@@ -255,7 +265,7 @@ const Filter = () => {
                       >
                         <span
                           className="cursor-pointer"
-                          onClick={() => handleMaxPriceChange(value.price)}
+                          onClick={() => handleMaxPriceChange(value.value)}
                         >
                           {value.price}
                         </span>

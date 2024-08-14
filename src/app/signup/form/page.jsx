@@ -92,7 +92,7 @@ const SignupForm = () => {
 
   return (
     <Container>
-      <div className="flex flex-col justify-center items-center md:items-start md:justify-start w-5/6">
+      <div className="flex flex-col justify-center items-center md:items-start md:justify-start w-full lg:w-5/6">
         <Link href="/" className="uppercase text-[#2D419F] text-2xl font-bold absolute top-10 left-10">
           Bunklet
        

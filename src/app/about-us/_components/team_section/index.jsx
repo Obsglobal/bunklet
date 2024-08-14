@@ -29,7 +29,7 @@ const TeamSection = () => {
         <div className="flex gap-6 md:flex-row flex-col items-center justify-between">
           {TeamDetails.map((team) => (
             <div className="flex flex-col border-[#D8D8D8] border gap-3" key={team.id}>
-              <Image src={team.image} width={400} height={100} />
+              <Image src={team.image} width={400} height={100} alt="team" />
               <span className="text-xl text-darkgray p-3">{team.name}</span>
               <span className="text-[#5D5D5D] font-normal p-3 text-lg">{team.title}</span>
             </div>

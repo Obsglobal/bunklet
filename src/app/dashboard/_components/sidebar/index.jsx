@@ -68,7 +68,7 @@ const Sidebar = () => {
               handleReset();
             }}
           >
-            <img src={link.icon} alt="icon" />
+            <Image width={30} height={30} src={link.icon} alt="icon" />
             <span className="font-medium text-primary">{link.link}</span>
           </Link>
         ))}
