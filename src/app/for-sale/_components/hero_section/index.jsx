@@ -5,6 +5,7 @@ import { IoSearch } from "react-icons/io5";
 import React, { useState } from "react";
 import Image from "next/image";
 import { filter } from "@/constants/images";
+import Filter from "@/components/ui/filter";
 const urbanist = Urbanist({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -44,6 +45,8 @@ const HeroSection = () => {
         <div className="absolute bottom-0 right-0">
           <img src="/salebg.svg" alt="bg" className="lg:w-[600px] md:w-[300px] w-[250px]" />
         </div>
+
+        <div className="absolute bottom-[-4.8rem] right-0 left-0 mx-auto w-3/4"><Filter /> </div>
       </div>
     </div>
   );

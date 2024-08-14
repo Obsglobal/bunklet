@@ -6,7 +6,7 @@ import PropertyCard from "../property-card";
 
 const SearchResults = () => {
   const filterValue = useAppSelector((state) => state.event.propertyFilter);
-console.log(filterValue)
+// console.log(filterValue)
   const filteredProperties = featuredProperties.filter((property) => {
     const {
       location,
