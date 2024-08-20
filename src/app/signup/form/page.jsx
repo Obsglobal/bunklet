@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 const SignupForm = () => {
   const [loading, setLoading] = useState(false);
   const role = useAppSelector((state) => state.role.role);
+  console.log(role)
   const [confirmPassword, setConfirmPassword] = useState("");
   const { push } = useRouter();
   const [details, setDetails] = useState({

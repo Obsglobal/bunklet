@@ -2,13 +2,22 @@
 import Link from "next/link";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { LuX } from "react-icons/lu";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "..";
 import Image from "next/image";
 import { profile } from "@/constants/images";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [token, setToken] = useState(null);
+  const [initialized, setInitialized] = useState(false);
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("accessToken");
+    setToken(storedToken);
+    setInitialized(true);
+  }, []);
+
   return (
     <>
       <div className="flex items-center px-6 lg:px-16 xl:px-24 justify-between h-16 bg-primary text-black md:h-18 lg:h-24 fixed md:top-0 top-0 z-[99] bg-none w-full transition-all ease-out duration-300 animate-fade_in">
@@ -22,21 +31,22 @@ const Navbar = () => {
           <Link href={"/faqs"}>FAQ&#39;s</Link>
           <Link href={"/contact-us"}>Contact us</Link>
         </div>
-        <div className="flex pl-3">
-          <Link
-            href="/signin"
-            className="items-center w-full text-nowrap md:gap-x-6 text-[#4361EE] hidden lg:flex mx-0"
-          >
-            <Image
-              src={profile}
-              width={48}
-              height={48}
-              className="rounded-[50%]"
-            />
-            <span>My Dashboard</span>
-            
-          </Link>
-        </div>
+        {initialized && (
+          <div className="flex pl-3">
+            <Link
+              href={token ? "/dashboard" : "/signin"}
+              className="items-center w-full text-nowrap md:gap-x-6 text-[#4361EE] hidden lg:flex mx-0"
+            >
+              <Image
+                src={profile}
+                width={48}
+                height={48}
+                className="rounded-[50%]"
+              />
+              <span>My Dashboard</span>
+            </Link>
+          </div>
+        )}
 
         <div className="lg:hidden block cursor-pointer">
           <GiHamburgerMenu

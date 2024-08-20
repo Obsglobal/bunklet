@@ -5,9 +5,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { logoutIcon } from "@/constants/images";
 import { useRouter } from "next/navigation";
+import { useAppDispatch } from "@/lib/hooks";
+import { setActiveLink } from "@/features/eventSlice";
 
 const Sidebar = () => {
   const { push } = useRouter();
+  const dispatch = useAppDispatch()
 
   const [activeId, setActiveId] = useState(0);
 
@@ -16,9 +19,10 @@ const Sidebar = () => {
     localStorage.removeItem("accessToken");
     push("/signin");
   };
-  const handleReset = () => {
-    
+  const handleClick = (link) => {
+    dispatch(setActiveLink(link))  
   };
+
   return (
     <>
       <div className="w-full flex-col gap-y-6 hidden md:flex">
@@ -37,7 +41,7 @@ const Sidebar = () => {
               key={link.id}
               onClick={() => {
                 setActiveId(link.id);
-                handleReset();
+                handleClick(link.to);
               }}
             >
               <Image src={link.icon} width={30} height={20} alt="icon" />
