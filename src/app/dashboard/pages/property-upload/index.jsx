@@ -300,7 +300,7 @@ const PropertyUpload = () => {
             <div className="flex flex-col gap-y-2">
               <span className="text-lg font-medium">Property Information</span>
               <span className="text-lightgray text-base">
-                "Provide Detailed Property Information Highlight What Makes Your
+              &quot;Provide Detailed Property Information Highlight What Makes Your
                 Property Stand Out.
               </span>
             </div>
@@ -485,7 +485,7 @@ const PropertyUpload = () => {
               <span className={lableStyles}>Features</span>
               <div className="grid grid-cols-4 gap-3">
                 {features.map((feature) => (
-                  <div className="flex items-center gap-x-2">
+                  <div className="flex items-center gap-x-2" key={feature.id}>
                     <input
                       type="checkbox"
                       name="features"
@@ -509,7 +509,7 @@ const PropertyUpload = () => {
               </span>
               <div className="ml-8 py-2">
                 {property.featureDescriptions.map((description, index) => (
-                  <div className="flex flex-row justify-between w-full items-center gap-x-3">
+                  <div className="flex flex-row justify-between w-full items-center gap-x-3" key={index}>
                     <span key={index} className="capitalize">
                       {description}
                     </span>
