@@ -4,6 +4,8 @@ export { default as info3 } from "../assets/images/info3.png";
 export { default as about } from "../assets/images/about.png";
 export { default as about2 } from "../assets/images/about2.png";
 export { default as dropdown } from "../assets/images/dropdown.png";
+export { default as dropdown2 } from "../assets/images/dropdown2.png";
+export { default as cancel } from "../assets/images/cancel.png";
 export { default as location } from "../assets/images/location.png";
 export { default as arrowright } from "../assets/images/arrow-square-right.svg";
 export { default as arrowleft } from "../assets/images/arrow-square-left.svg";

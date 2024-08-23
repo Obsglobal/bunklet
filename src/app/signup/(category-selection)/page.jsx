@@ -23,7 +23,7 @@ const CategorySelection = () => {
           onClick={() => handleRole("user")}
           className="hover:bg-lightblue border border-[#4361EE] text-lightblue transition-all ease-in hover:text-primary w-full px-4 md:w-[170px] py-4 md:text-lg font-open_sans rounded-[5px] text-center"
         >
-          User
+          User  
         </Link>
         <Link
           href="/signup/form"

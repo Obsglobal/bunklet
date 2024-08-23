@@ -518,3 +518,81 @@ export const sideLinks = [
   { id: 3, link: "Profile", to: "profile", icon: userIcon },
   { id: 4, link: "Favorites", to: "favorite", icon: favoriteIcon },
 ];
+
+export const features = [
+  {
+    id: 0,
+    title: "Free Wifi",
+    value: "wifi"
+  },
+  {
+    id: 1,
+    title: "Swimming Pool",
+    value: "pool"
+  },
+  {
+    id: 2,
+    title: "Fenced",
+    value: "fenced"
+  },
+  {
+    id: 3,
+    title: "Boys Quarter",
+    value: "quarter"
+  },
+  {
+    id: 4,
+    title: "Drainage",
+    value: "drainage"
+  },
+  {
+    id: 5,
+    title: "Drainage System",
+    value: "d_system"
+  },
+  {
+    id: 6,
+    title: "CCTV",
+    value: "cctv"
+  },
+  {
+    id: 7,
+    title: "Elevator",
+    value: "elevator"
+  },
+  {
+    id: 8,
+    title: "Fast Internet",
+    value: "internet"
+  },
+  {
+    id: 9,
+    title: "24hr Security",
+    value: "security"
+  },
+  {
+    id: 10,
+    title: "POP",
+    value: "pop"
+  },
+  {
+    id: 11,
+    title: "Tiled",
+    value: "tiled"
+  },
+  {
+    id: 12,
+    title: "Garage",
+    value: "garage"
+  },
+  {
+    id: 13,
+    title: "Air Conditioned",
+    value: "ac"
+  },
+  {
+    id: 14,
+    title: "Estate",
+    value: "estate"
+  },
+]
