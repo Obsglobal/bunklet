@@ -1,17 +1,34 @@
 "use client";
 import { Button } from "@/components/ui";
-import { features } from "@/constants";
-import { cancel, dropdow, dropdown2, dropdown2n2 } from "@/constants/images";
+import { features, locationFilter, propertyFilter } from "@/constants";
+import {
+  cancel,
+  deleteIcon,
+  dropdow,
+  dropdown2,
+  dropdown2n2,
+  image,
+  spinner,
+} from "@/constants/images";
+import { setActiveLink } from "@/features/eventSlice";
 import { useAppSelector } from "@/lib/hooks";
 import Image from "next/image";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const PropertyUpload = () => {
   const [showPropertyType, setShowPropertyType] = useState(false);
   const [showStateSelect, setShowStateSelect] = useState(false);
+  const [showLocalitySelect, setShowLocalitySelect] = useState(false);
+  const [showDenominationSelect, setShowDenominationSelect] = useState(false);
+  const [showStructureSelect, setShowStructureSelect] = useState(false);
+  const [showFeeSelect, setShowFeeSelect] = useState(false);
+  const [showBedroomSelect, setShowBedroomSelect] = useState(false);
+  const [showBathroomSelect, setShowBathroomSelect] = useState(false);
+  const [showToiletSelect, setShowToiletSelect] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const role = useAppSelector((state) => state.role.role);
-  console.log(role)
+  const [loading, setLoading] = useState(false);
+  // const role = useAppSelector((state) => state.role.role);
   const lableStyles = `md:text-lg text-base font-semibold text-lightblue`;
   const [step, setStep] = useState(1);
   const [property, setProperty] = useState({
@@ -35,6 +52,7 @@ const PropertyUpload = () => {
     featureDescription: "",
     featureDescriptions: [],
     youtubeLink: "",
+    images: [],
   });
 
   const handleNext = () => {
@@ -106,11 +124,20 @@ const PropertyUpload = () => {
     });
   };
 
-  const handleTypeClick = () => {
-    setShowPropertyType(!showPropertyType);
+  const handleImageChange = (event) => {
+    const files = event.target.files;
+    const imagesArray = [...property.images];
+
+    for (const file of files) {
+      imagesArray.push(URL.createObjectURL(file));
+    }
+
+    setProperty({ ...property, images: imagesArray });
   };
-  const handleStateClick = () => {
-    setShowStateSelect(!showStateSelect);
+
+  const handleDeleteImage = (index) => {
+    const images = property.images.filter((image, i) => i !== index);
+    setProperty({ ...property, images });
   };
 
   const handleSubmit = async (e) => {
@@ -118,7 +145,7 @@ const PropertyUpload = () => {
     const token = localStorage.getItem("accessToken");
     if (errorMessage === "") {
       try {
-        // Make the API request here
+        setLoading(true);
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/properties/agent-properties/`,
           {
@@ -130,15 +157,20 @@ const PropertyUpload = () => {
             body: JSON.stringify(property),
           }
         );
+        const data = await response.json();
         console.log(response);
         if (response.ok) {
-          // Handle successful form submission
+          setLoading(false);
+          toast.success("Property has beeen successfully submitted");
+          setActiveLink("dashboard")
         } else {
-          // Handle API errors
-          console.error("API request failed:", response);
+          setLoading(false);
+          console.log("API request failed:", response);
+          toast.error("Error in submitting property");
         }
       } catch (error) {
         console.error("API request failed:", error);
+        setLoading(false);
       }
     }
   };
@@ -170,8 +202,8 @@ const PropertyUpload = () => {
                   <input
                     type="radio"
                     name="property_state"
-                    value="For Rent"
-                    checked={property.property_state === "For Rent"}
+                    value="rent"
+                    checked={property.property_state === "rent"}
                     onChange={handlePurposeChange}
                   />
                   <span className="font-semibold">For Rent</span>
@@ -180,8 +212,8 @@ const PropertyUpload = () => {
                   <input
                     type="radio"
                     name="property_state"
-                    value="For Sale"
-                    checked={property.property_state === "For Sale"}
+                    value="sale"
+                    checked={property.property_state === "sale"}
                     onChange={handlePurposeChange}
                   />
                   <span className="font-semibold">For Sale</span>
@@ -195,9 +227,11 @@ const PropertyUpload = () => {
               </label>
               <div
                 className="border flex items-center cursor-pointer justify-between relative bg-primary border-lightblue rounded-[10px] px-4 py-2"
-                onClick={handleTypeClick}
+                onClick={() => setShowPropertyType(!showPropertyType)}
               >
-                <span className="text-lightgray">Select an option</span>
+                <span className="text-lightgray">
+                  {property.propertyType || "Select an option"}
+                </span>
                 <Image
                   src={dropdown2}
                   width={30}
@@ -205,9 +239,30 @@ const PropertyUpload = () => {
                   className=""
                   alt="open"
                 />
-                <div className="absolute">
-                  <div className="bg-primary"></div>
-                </div>
+                {showPropertyType && (
+                  <div className="absolute z-10 top-0 w-1/2 h-[30vh] overflow-hidden">
+                    <div className="w-full h-full overflow-y-auto bg-primary ">
+                      {propertyFilter.map((value) => (
+                        <div
+                          className="flex flex-col py-1 items-center justify-center gap-y-2"
+                          key={value.id}
+                        >
+                          <div
+                            className=""
+                            onClick={() =>
+                              setProperty({
+                                ...property,
+                                propertyType: value.property,
+                              })
+                            }
+                          >
+                            {value.property}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -218,9 +273,11 @@ const PropertyUpload = () => {
                 </label>
                 <div
                   className="border flex items-center cursor-pointer justify-between relative bg-primary border-lightblue rounded-[10px] px-5 py-2"
-                  onClick={handleStateClick}
+                  onClick={() => setShowStateSelect(!showStateSelect)}
                 >
-                  <span className="text-lightgray">Select an option</span>
+                  <span className="text-lightgray">
+                    {property.state || "Select an option"}
+                  </span>
                   <Image
                     src={dropdown2}
                     width={30}
@@ -228,9 +285,30 @@ const PropertyUpload = () => {
                     className=""
                     alt="open"
                   />
-                  <div className="absolute">
-                    <div className="bg-primary"></div>
-                  </div>
+                  {showStateSelect && (
+                    <div className="absolute z-10 top-0 w-1/2 h-[30vh] overflow-hidden">
+                      <div className="w-full h-full overflow-y-auto bg-primary ">
+                        {locationFilter.map((value) => (
+                          <div
+                            className="flex flex-col py-1 items-center justify-center gap-y-2"
+                            key={value.id}
+                          >
+                            <div
+                              className=""
+                              onClick={() =>
+                                setProperty({
+                                  ...property,
+                                  state: value.location,
+                                })
+                              }
+                            >
+                              {value.location}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="w-full flex flex-col gap-y-1">
@@ -239,9 +317,11 @@ const PropertyUpload = () => {
                 </label>
                 <div
                   className="border flex items-center cursor-pointer justify-between relative bg-primary border-lightblue rounded-[10px] px-5 py-2"
-                  onClick={handleStateClick}
+                  onClick={() => setShowLocalitySelect(!showLocalitySelect)}
                 >
-                  <span className="text-lightgray">Select an option</span>
+                  <span className="text-lightgray">
+                    {property.location || "Select an option"}
+                  </span>
                   <Image
                     src={dropdown2}
                     width={30}
@@ -249,9 +329,30 @@ const PropertyUpload = () => {
                     className=""
                     alt="open"
                   />
-                  <div className="absolute">
-                    <div className="bg-primary"></div>
-                  </div>
+                  {showLocalitySelect && (
+                    <div className="absolute z-10 top-0 w-1/2 h-[30vh] overflow-hidden">
+                      <div className="w-full h-full overflow-y-auto bg-primary ">
+                        {locationFilter.map((value) => (
+                          <div
+                            className="flex flex-col py-1 items-center justify-center gap-y-2"
+                            key={value.id}
+                          >
+                            <div
+                              className=""
+                              onClick={() =>
+                                setProperty({
+                                  ...property,
+                                  location: value.location,
+                                })
+                              }
+                            >
+                              {value.location}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -300,8 +401,8 @@ const PropertyUpload = () => {
             <div className="flex flex-col gap-y-2">
               <span className="text-lg font-medium">Property Information</span>
               <span className="text-lightgray text-base">
-              &quot;Provide Detailed Property Information Highlight What Makes Your
-                Property Stand Out.
+                &quot;Provide Detailed Property Information Highlight What Makes
+                Your Property Stand Out.
               </span>
             </div>
             <div className="flex items-center w-full flex-row gap-x-4">
@@ -324,9 +425,13 @@ const PropertyUpload = () => {
                 </label>
                 <div
                   className="border flex items-center cursor-pointer justify-between relative bg-primary border-lightblue rounded-[10px] px-5 py-2"
-                  onClick={handleStateClick}
+                  onClick={() =>
+                    setShowDenominationSelect(!showDenominationSelect)
+                  }
                 >
-                  <span className="text-lightgray">Select an option</span>
+                  <span className="text-lightgray">
+                    {property.denomination || "Select an option"}
+                  </span>
                   <Image
                     src={dropdown2}
                     width={30}
@@ -334,9 +439,30 @@ const PropertyUpload = () => {
                     className=""
                     alt="open"
                   />
-                  <div className="absolute">
-                    <div className="bg-primary"></div>
-                  </div>
+                  {showDenominationSelect && (
+                    <div className="absolute z-10 top-0 w-1/2 h-[30vh] overflow-hidden">
+                      <div className="w-full h-full overflow-y-auto bg-primary ">
+                        {locationFilter.map((value) => (
+                          <div
+                            className="flex flex-col py-1 items-center justify-center gap-y-2"
+                            key={value.id}
+                          >
+                            <div
+                              className=""
+                              onClick={() =>
+                                setProperty({
+                                  ...property,
+                                  denomination: value.location,
+                                })
+                              }
+                            >
+                              {value.location}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -358,13 +484,15 @@ const PropertyUpload = () => {
               </div>
               <div className="w-full flex flex-col gap-y-2">
                 <label htmlFor="title" className={lableStyles}>
-                  Agency Fee % (If Apllicable)
+                  Agency Fee % (If Applicable)
                 </label>
                 <div
                   className="border flex items-center cursor-pointer justify-between relative bg-primary border-lightblue rounded-[10px] px-5 py-2"
-                  onClick={handleStateClick}
+                  onClick={() => setShowFeeSelect(!showFeeSelect)}
                 >
-                  <span className="text-lightgray">Select an option</span>
+                  <span className="text-lightgray">
+                    {property.agencyFee || "Select an option"}
+                  </span>
                   <Image
                     src={dropdown2}
                     width={30}
@@ -372,9 +500,30 @@ const PropertyUpload = () => {
                     className=""
                     alt="open"
                   />
-                  <div className="absolute">
-                    <div className="bg-primary"></div>
-                  </div>
+                  {showFeeSelect && (
+                    <div className="absolute z-10 top-0 w-1/2 h-[30vh] overflow-hidden">
+                      <div className="w-full h-full overflow-y-auto bg-primary ">
+                        {locationFilter.map((value) => (
+                          <div
+                            className="flex flex-col py-1 items-center justify-center gap-y-2"
+                            key={value.id}
+                          >
+                            <div
+                              className=""
+                              onClick={() =>
+                                setProperty({
+                                  ...property,
+                                  agencyFee: value.location,
+                                })
+                              }
+                            >
+                              {value.location}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -386,9 +535,11 @@ const PropertyUpload = () => {
                 </label>
                 <div
                   className="border flex items-center cursor-pointer relative bg-primary border-lightblue rounded-[10px] px-5 py-2"
-                  onClick={handleStateClick}
+                  onClick={() => setShowStructureSelect(!showStructureSelect)}
                 >
-                  <span className="text-lightgray">Select an option</span>
+                  <span className="text-lightgray">
+                    {property.pricingStructure || "Select an option"}
+                  </span>
                   <Image
                     src={dropdown2}
                     width={30}
@@ -396,9 +547,30 @@ const PropertyUpload = () => {
                     className=""
                     alt="open"
                   />
-                  <div className="absolute">
-                    <div className="bg-primary"></div>
-                  </div>
+                  {showStructureSelect && (
+                    <div className="absolute z-10 top-0 w-1/2 h-[30vh] overflow-hidden">
+                      <div className="w-full h-full overflow-y-auto bg-primary ">
+                        {locationFilter.map((value) => (
+                          <div
+                            className="flex flex-col py-1 items-center justify-center gap-y-2"
+                            key={value.id}
+                          >
+                            <div
+                              className=""
+                              onClick={() =>
+                                setProperty({
+                                  ...property,
+                                  pricingStructure: value.location,
+                                })
+                              }
+                            >
+                              {value.location}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="flex flex-col w-full gap-y-2">
@@ -423,9 +595,11 @@ const PropertyUpload = () => {
                 </label>
                 <div
                   className="border flex items-center cursor-pointer justify-between relative bg-primary border-lightblue rounded-[10px] px-5 py-2"
-                  onClick={handleStateClick}
+                  onClick={() => setShowBedroomSelect(!showBedroomSelect)}
                 >
-                  <span className="text-lightgray">Select an option</span>
+                  <span className="text-lightgray">
+                    {property.bedroom || "Select an option"}
+                  </span>
                   <Image
                     src={dropdown2}
                     width={30}
@@ -433,9 +607,30 @@ const PropertyUpload = () => {
                     className=""
                     alt="open"
                   />
-                  <div className="absolute">
-                    <div className="bg-primary"></div>
-                  </div>
+                  {showBedroomSelect && (
+                    <div className="absolute z-10 top-0 w-1/2 h-[30vh] overflow-hidden">
+                      <div className="w-full h-full overflow-y-auto bg-primary ">
+                        {locationFilter.map((value) => (
+                          <div
+                            className="flex flex-col py-1 items-center justify-center gap-y-2"
+                            key={value.id}
+                          >
+                            <div
+                              className=""
+                              onClick={() =>
+                                setProperty({
+                                  ...property,
+                                  bedroom: value.location,
+                                })
+                              }
+                            >
+                              {value.location}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="flex flex-col w-full gap-y-2">
@@ -444,9 +639,11 @@ const PropertyUpload = () => {
                 </label>
                 <div
                   className="border flex items-center cursor-pointer bg-primary justify-between relative border-lightblue rounded-[10px] px-5 py-2"
-                  onClick={handleStateClick}
+                  onClick={() => setShowBathroomSelect(!showBathroomSelect)}
                 >
-                  <span className="text-lightgray">Select an option</span>
+                  <span className="text-lightgray">
+                    {property.bathroom || "Select an option"}
+                  </span>
                   <Image
                     src={dropdown2}
                     width={30}
@@ -454,9 +651,30 @@ const PropertyUpload = () => {
                     className=""
                     alt="open"
                   />
-                  <div className="absolute">
-                    <div className="bg-primary"></div>
-                  </div>
+                  {showBathroomSelect && (
+                    <div className="absolute z-10 top-0 w-1/2 h-[30vh] overflow-hidden">
+                      <div className="w-full h-full overflow-y-auto bg-primary ">
+                        {locationFilter.map((value) => (
+                          <div
+                            className="flex flex-col py-1 items-center justify-center gap-y-2"
+                            key={value.id}
+                          >
+                            <div
+                              className=""
+                              onClick={() =>
+                                setProperty({
+                                  ...property,
+                                  bathroom: value.location,
+                                })
+                              }
+                            >
+                              {value.location}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="flex w-full flex-col gap-y-2">
@@ -465,9 +683,11 @@ const PropertyUpload = () => {
                 </label>
                 <div
                   className="border flex items-center justify-between relative bg-primary border-lightblue rounded-[10px] px-5 py-2"
-                  onClick={handleStateClick}
+                  onClick={() => setShowToiletSelect(!showToiletSelect)}
                 >
-                  <span className="text-lightgray">Select an option</span>
+                  <span className="text-lightgray">
+                    {property.toilet || "Select an option"}
+                  </span>
                   <Image
                     src={dropdown2}
                     width={30}
@@ -475,9 +695,30 @@ const PropertyUpload = () => {
                     className=""
                     alt="open"
                   />
-                  <div className="absolute">
-                    <div className="bg-primary"></div>
-                  </div>
+                  {showToiletSelect && (
+                    <div className="absolute z-10 top-0 w-1/2 h-[30vh] overflow-hidden">
+                      <div className="w-full h-full overflow-y-auto bg-primary ">
+                        {locationFilter.map((value) => (
+                          <div
+                            className="flex flex-col py-1 items-center justify-center gap-y-2"
+                            key={value.id}
+                          >
+                            <div
+                              className=""
+                              onClick={() =>
+                                setProperty({
+                                  ...property,
+                                  toilet: value.location,
+                                })
+                              }
+                            >
+                              {value.location}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -509,7 +750,10 @@ const PropertyUpload = () => {
               </span>
               <div className="ml-8 py-2">
                 {property.featureDescriptions.map((description, index) => (
-                  <div className="flex flex-row justify-between w-full items-center gap-x-3" key={index}>
+                  <div
+                    className="flex flex-row justify-between w-full items-center gap-x-3"
+                    key={index}
+                  >
                     <span key={index} className="capitalize">
                       {description}
                     </span>
@@ -570,17 +814,85 @@ const PropertyUpload = () => {
             </div>
             <div className="flex items-center gap-x-2">
               <Button onClick={handlePrev}>Prev</Button>
-              <Button onClick={handleSubmit}>Next</Button>
+              <Button onClick={handleNext}>Next</Button>
             </div>
           </div>
         </div>
       );
 
-    case 2:
+    case 3:
       return (
         <div>
           <div className="flex flex-col gap-y-5 w-1/2">
-            <div className="flex flex-col gap-y-2"></div>
+            <div className="flex flex-col gap-y-6">
+              <div className="font-medium text-2xl">
+                Upload Property Pictures
+              </div>
+              <div className="border border-lightgray flex flex-col gap-y-2 w-[30%] rounded items-center px-2 py-3 justify-center">
+                <div>
+                  <Image
+                    src={image}
+                    alt="upload image"
+                    width={200}
+                    height={200}
+                  />
+                </div>
+                <div>
+                  <Button>
+                    <label htmlFor="upload" className="cursor-pointer">
+                      Upload Photos
+                    </label>
+                  </Button>
+                  <input
+                    type="file"
+                    name="upload"
+                    id="upload"
+                    multiple
+                    className="hidden"
+                    onChange={handleImageChange}
+                  />
+                </div>
+              </div>
+              <div className="grid lg:grid-cols-5 gap-4 pt-12">
+                {property.images.map((image, index) => (
+                  <div key={index} className="relative">
+                    <Image
+                      src={image}
+                      width={200}
+                      height={200}
+                      alt="property_image"
+                    />
+                    <button
+                      onClick={() => handleDeleteImage(index)}
+                      className="absolute top-0 right-0 cursor-pointer hover:scale-95 transition-all ease-in"
+                    >
+                      <Image
+                        src={deleteIcon}
+                        width={50}
+                        height={50}
+                        alt="delete_image"
+                      />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            {property.images.length !== 0 &&  <div className="flex items-center gap-x-2">
+                <Button onClick={handlePrev}>Prev</Button>
+                <Button onClick={handleSubmit}>
+                  {loading ? (
+                    <Image
+                      width={25}
+                      height={25}
+                      src={spinner}
+                      alt="loading"
+                      className="w-[25px]"
+                    />
+                  ) : (
+                    <span>Submit for Review</span>
+                  )}
+                </Button>
+              </div>}
+            </div>
           </div>
         </div>
       );

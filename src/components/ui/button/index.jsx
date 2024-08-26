@@ -29,7 +29,7 @@ const Button = ({
       style={buttonStyle}
       type={type}
       onClick={onClick}
-      className={`${className} hover:scale-95`}
+      className={`${className} hover:scale-95 transition-all ease-in`}
     >
       {children}
     </button>

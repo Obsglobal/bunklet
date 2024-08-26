@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   propertyFilter: null,
-  activeLink: "",
+  activeLink: "dashboard",
 };
 
 export const eventSlice = createSlice({

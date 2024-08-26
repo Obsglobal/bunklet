@@ -1,14 +1,17 @@
 "use client";
+import 'react-toastify/dist/ReactToastify.css';
 import Sidebar from "./_components/sidebar";
 import Navbar from "./_components/navbar";
 import StoreProvider from "../StoreProvider";
 import ProtectedRoute from "@/components/protectedRoute";
+import { ToastContainer } from "react-toastify";
 
 const Layout = ({ children }) => {
 
 
   return (
     <ProtectedRoute>
+      <ToastContainer position="bottom-right" />
     <StoreProvider>
       <div className="relative">
         <div className="flex h-screen">
