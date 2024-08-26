@@ -31,7 +31,7 @@ const Navbar = () => {
           <Link href={"/faqs"}>FAQ&#39;s</Link>
           <Link href={"/contact-us"}>Contact us</Link>
         </div>
-        {(initialized && token) && (
+        {(initialized) && (
           <div className="flex pl-3">
             <Link
               href="/dashboard"
