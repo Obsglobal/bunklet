@@ -4,19 +4,18 @@ import { features, locationFilter, propertyFilter } from "@/constants";
 import {
   cancel,
   deleteIcon,
-  dropdow,
   dropdown2,
-  dropdown2n2,
   image,
   spinner,
 } from "@/constants/images";
 import { setActiveLink } from "@/features/eventSlice";
-import { useAppSelector } from "@/lib/hooks";
+import { useAppDispatch } from "@/lib/hooks";
 import Image from "next/image";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 const PropertyUpload = () => {
+  const dispatch = useAppDispatch()
   const [showPropertyType, setShowPropertyType] = useState(false);
   const [showStateSelect, setShowStateSelect] = useState(false);
   const [showLocalitySelect, setShowLocalitySelect] = useState(false);
@@ -162,7 +161,7 @@ const PropertyUpload = () => {
         if (response.ok) {
           setLoading(false);
           toast.success("Property has beeen successfully submitted");
-          setActiveLink("dashboard")
+          dispatch(setActiveLink("dashboard"));
         } else {
           setLoading(false);
           console.log("API request failed:", response);
@@ -876,22 +875,24 @@ const PropertyUpload = () => {
                   </div>
                 ))}
               </div>
-            {property.images.length !== 0 &&  <div className="flex items-center gap-x-2">
-                <Button onClick={handlePrev}>Prev</Button>
-                <Button onClick={handleSubmit}>
-                  {loading ? (
-                    <Image
-                      width={25}
-                      height={25}
-                      src={spinner}
-                      alt="loading"
-                      className="w-[25px]"
-                    />
-                  ) : (
-                    <span>Submit for Review</span>
-                  )}
-                </Button>
-              </div>}
+              {property.images.length !== 0 && (
+                <div className="flex items-center gap-x-2">
+                  <Button onClick={handlePrev}>Prev</Button>
+                  <Button onClick={handleSubmit}>
+                    {loading ? (
+                      <Image
+                        width={25}
+                        height={25}
+                        src={spinner}
+                        alt="loading"
+                        className="w-[25px]"
+                      />
+                    ) : (
+                      <span>Submit for Review</span>
+                    )}
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         </div>
