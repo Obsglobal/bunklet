@@ -31,11 +31,11 @@ const Navbar = () => {
           <Link href={"/faqs"}>FAQ&#39;s</Link>
           <Link href={"/contact-us"}>Contact us</Link>
         </div>
-          <div className="flex pl-3 gap-x-3">
-            <Link href="/signup">
+          <div className="flex pl-3 gap-x-8 items-center justify-center">
+            <Link href="/signup" className="text-nowrap">
               <Button backgroundColor="transparent" textColor="#4361EE">Sign up</Button>
             </Link>
-            <Link href="/signin">
+            <Link href="/signin" className="text-nowrap">
               <Button>Sign in</Button>
             </Link>
             {/* <Link
