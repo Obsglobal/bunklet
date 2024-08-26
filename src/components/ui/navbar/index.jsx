@@ -9,14 +9,14 @@ import { profile } from "@/constants/images";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
-  const [token, setToken] = useState(null);
-  const [initialized, setInitialized] = useState(false);
+  // const [token, setToken] = useState(null);
+  // const [initialized, setInitialized] = useState(false);
 
-  useEffect(() => {
-    const storedToken = localStorage.getItem("accessToken");
-    setToken(storedToken);
-    setInitialized(true);
-  }, []);
+  // useEffect(() => {
+  //   const storedToken = localStorage.getItem("accessToken");
+  //   setToken(storedToken);
+  //   setInitialized(true);
+  // }, []);
 
   return (
     <>
@@ -31,9 +31,14 @@ const Navbar = () => {
           <Link href={"/faqs"}>FAQ&#39;s</Link>
           <Link href={"/contact-us"}>Contact us</Link>
         </div>
-        {initialized && (
-          <div className="flex pl-3">
-            <Link
+          <div className="flex pl-3 gap-x-3">
+            <Link href="/signup">
+              <Button backgroundColor="transparent" textColor="#4361EE">Sign up</Button>
+            </Link>
+            <Link href="/signin">
+              <Button>Sign in</Button>
+            </Link>
+            {/* <Link
               href={token ? "/dashboard" : "/signin"}
               className="items-center w-full text-nowrap md:gap-x-6 text-[#4361EE] hidden lg:flex mx-0"
             >
@@ -44,9 +49,8 @@ const Navbar = () => {
                 className="rounded-[50%]"
               />
               <span>My Dashboard</span>
-            </Link>
+            </Link> */}
           </div>
-        )}
 
         <div className="lg:hidden block cursor-pointer">
           <GiHamburgerMenu
