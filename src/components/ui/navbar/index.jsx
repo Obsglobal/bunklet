@@ -31,10 +31,10 @@ const Navbar = () => {
           <Link href={"/faqs"}>FAQ&#39;s</Link>
           <Link href={"/contact-us"}>Contact us</Link>
         </div>
-        {(initialized) && (
+        {initialized && (
           <div className="flex pl-3">
             <Link
-              href="/dashboard"
+              href={token ? "/dashboard" : "/signin"}
               className="items-center w-full text-nowrap md:gap-x-6 text-[#4361EE] hidden lg:flex mx-0"
             >
               <Image
