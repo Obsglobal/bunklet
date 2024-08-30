@@ -27,7 +27,7 @@ const Sidebar = () => {
     <>
       <div className="w-full flex-col gap-y-6 hidden md:flex">
         <div className="flex w-full justify-center pt-8">
-          <span className="text-primary text-2xl font-semibold">Bunklet</span>
+          <Link href={'/'} className="text-primary text-2xl font-semibold">Bunklet</Link>
         </div>
         <div className="w-full bg-primary bg-opacity-25 p-[0.5px]" />
 

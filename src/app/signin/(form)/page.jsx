@@ -68,9 +68,9 @@ const SigninForm = () => {
           const profile = data.profile;
           localStorage.setItem("user", JSON.stringify(profile));
           localStorage.setItem("accessToken", token);
-          toast.success("Sign in successfull, redirecting to dashboard");
+          toast.success("Successfull signed in");
           setLoading(false);
-          push("/dashboard");
+          push("/");
         } else {
           if (response.status === 400) {
             toast.error("Invalid email or password");
