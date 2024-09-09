@@ -28,7 +28,7 @@ const PropertyUpload = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
   // const role = useAppSelector((state) => state.role.role);
-  const lableStyles = `md:text-lg text-base font-semibold text-lightblue`;
+  const lableStyles = `md:text-lg text-sm font-semibold text-lightblue`;
   const [step, setStep] = useState(1);
   const [property, setProperty] = useState({
     title: "",
@@ -53,7 +53,6 @@ const PropertyUpload = () => {
     youtubeLink: "",
     images: [],
   });
-
   const handleNext = () => {
     const requiredFields = [
       "title",
@@ -176,8 +175,8 @@ const PropertyUpload = () => {
   switch (step) {
     case 1:
       return (
-        <div>
-          <div className="flex flex-col gap-y-5 w-1/2">
+        <div className="overflow-auto md:h-full h-screen">
+          <div className="flex flex-col gap-y-5 md:w-1/2">
             <div className="flex flex-col gap-y-3">
               <label htmlFor="title" className={lableStyles}>
                 Title
@@ -228,7 +227,7 @@ const PropertyUpload = () => {
                 className="border flex items-center cursor-pointer justify-between relative bg-primary border-lightblue rounded-[10px] px-4 py-2"
                 onClick={() => setShowPropertyType(!showPropertyType)}
               >
-                <span className="text-lightgray">
+                <span className="text-lightgray md:text-base text-sm">
                   {property.propertyType || "Select an option"}
                 </span>
                 <Image
@@ -256,7 +255,8 @@ const PropertyUpload = () => {
                             }
                           >
                             {value.property}
-                          </div>
+                          </div>  console.log(process.env.NEXT_PUBLIC_BASE_URL)
+
                         </div>
                       ))}
                     </div>
@@ -274,7 +274,7 @@ const PropertyUpload = () => {
                   className="border flex items-center cursor-pointer justify-between relative bg-primary border-lightblue rounded-[10px] px-5 py-2"
                   onClick={() => setShowStateSelect(!showStateSelect)}
                 >
-                  <span className="text-lightgray">
+                  <span className="text-lightgray md:text-base text-sm">
                     {property.state || "Select an option"}
                   </span>
                   <Image
@@ -318,7 +318,7 @@ const PropertyUpload = () => {
                   className="border flex items-center cursor-pointer justify-between relative bg-primary border-lightblue rounded-[10px] px-5 py-2"
                   onClick={() => setShowLocalitySelect(!showLocalitySelect)}
                 >
-                  <span className="text-lightgray">
+                  <span className="text-lightgray md:text-base text-sm">
                     {property.location || "Select an option"}
                   </span>
                   <Image
@@ -395,11 +395,11 @@ const PropertyUpload = () => {
 
     case 2:
       return (
-        <div>
-          <div className="flex flex-col gap-y-5 w-1/2">
+        <div className="h-[120vh] md:h-full">
+          <div className="flex flex-col gap-y-5 md:w-1/2">
             <div className="flex flex-col gap-y-2">
-              <span className="text-lg font-medium">Property Information</span>
-              <span className="text-lightgray text-base">
+              <span className="md:text-lg font-medium">Property Information</span>
+              <span className="text-lightgray text-sm md:text-base">
                 &quot;Provide Detailed Property Information Highlight What Makes
                 Your Property Stand Out.
               </span>
@@ -428,7 +428,7 @@ const PropertyUpload = () => {
                     setShowDenominationSelect(!showDenominationSelect)
                   }
                 >
-                  <span className="text-lightgray">
+                  <span className="text-lightgray md:text-base text-sm">
                     {property.denomination || "Select an option"}
                   </span>
                   <Image
@@ -489,7 +489,7 @@ const PropertyUpload = () => {
                   className="border flex items-center cursor-pointer justify-between relative bg-primary border-lightblue rounded-[10px] px-5 py-2"
                   onClick={() => setShowFeeSelect(!showFeeSelect)}
                 >
-                  <span className="text-lightgray">
+                  <span className="text-lightgray md:text-base text-sm">
                     {property.agencyFee || "Select an option"}
                   </span>
                   <Image
@@ -533,10 +533,10 @@ const PropertyUpload = () => {
                   Pricing Structure
                 </label>
                 <div
-                  className="border flex items-center cursor-pointer relative bg-primary border-lightblue rounded-[10px] px-5 py-2"
+                  className="border flex items-center justify-between cursor-pointer relative bg-primary border-lightblue rounded-[10px] px-5 py-2"
                   onClick={() => setShowStructureSelect(!showStructureSelect)}
                 >
-                  <span className="text-lightgray">
+                  <span className="text-lightgray md:text-base text-sm">
                     {property.pricingStructure || "Select an option"}
                   </span>
                   <Image
@@ -593,10 +593,10 @@ const PropertyUpload = () => {
                   Bedroom
                 </label>
                 <div
-                  className="border flex items-center cursor-pointer justify-between relative bg-primary border-lightblue rounded-[10px] px-5 py-2"
+                  className="border w-full flex items-center cursor-pointer justify-between relative bg-primary border-lightblue rounded-[10px] px-5 py-2"
                   onClick={() => setShowBedroomSelect(!showBedroomSelect)}
                 >
-                  <span className="text-lightgray">
+                  <span className="text-lightgray md:text-base text-sm">
                     {property.bedroom || "Select an option"}
                   </span>
                   <Image
@@ -640,7 +640,7 @@ const PropertyUpload = () => {
                   className="border flex items-center cursor-pointer bg-primary justify-between relative border-lightblue rounded-[10px] px-5 py-2"
                   onClick={() => setShowBathroomSelect(!showBathroomSelect)}
                 >
-                  <span className="text-lightgray">
+                  <span className="text-lightgray md:text-base text-sm">
                     {property.bathroom || "Select an option"}
                   </span>
                   <Image
@@ -684,7 +684,7 @@ const PropertyUpload = () => {
                   className="border flex items-center justify-between relative bg-primary border-lightblue rounded-[10px] px-5 py-2"
                   onClick={() => setShowToiletSelect(!showToiletSelect)}
                 >
-                  <span className="text-lightgray">
+                  <span className="text-lightgray md:text-base text-sm">
                     {property.toilet || "Select an option"}
                   </span>
                   <Image
@@ -725,7 +725,7 @@ const PropertyUpload = () => {
               <span className={lableStyles}>Features</span>
               <div className="grid grid-cols-4 gap-3">
                 {features.map((feature) => (
-                  <div className="flex items-center gap-x-2" key={feature.id}>
+                  <div className="flex md:text-base text-sm items-center gap-x-2" key={feature.id}>
                     <input
                       type="checkbox"
                       name="features"
@@ -740,10 +740,10 @@ const PropertyUpload = () => {
               </div>
             </div>
             <div className="flex flex-col gap-y-2">
-              <span className="text-lg font-semibold text-lightblue">
+              <span className="md:text-lg font-semibold text-lightblue">
                 Distinctive Features and Amenities
               </span>
-              <span className="text-lightgray text-base">
+              <span className="text-lightgray text-sm md:text-base">
                 Give unique descriptions and features of your property (Maximum
                 of 6 features )
               </span>
@@ -822,9 +822,9 @@ const PropertyUpload = () => {
     case 3:
       return (
         <div>
-          <div className="flex flex-col gap-y-5 w-1/2">
+          <div className="flex flex-col gap-y-5 w-full md:w-1/2">
             <div className="flex flex-col gap-y-6">
-              <div className="font-medium text-2xl">
+              <div className="font-medium md:text-2xl">
                 Upload Property Pictures
               </div>
               <div className="border border-lightgray flex flex-col gap-y-2 w-[30%] rounded items-center px-2 py-3 justify-center">
@@ -836,7 +836,7 @@ const PropertyUpload = () => {
                     height={200}
                   />
                 </div>
-                <div>
+                <div className="w-ful mx-auto">
                   <Button>
                     <label htmlFor="upload" className="cursor-pointer">
                       Upload Photos

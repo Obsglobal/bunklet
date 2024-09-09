@@ -63,13 +63,14 @@ const Sidebar = () => {
         {sideLinks.map((link) => (
           <Link
             href={`#`}
-            className={`mx-auto flex flex-col text-sm w-full items-center gap-x-3 rounded-[5px] px-3 py-4 transition-all ease-in hover:cursor-pointer hover:bg-primary hover:bg-opacity-20 ${
+            className={`mx-auto flex flex-col text-sm text-center w-full items-center gap-x-3 rounded-[5px] px-3 py-4 transition-all ease-in hover:cursor-pointer hover:bg-primary hover:bg-opacity-20 ${
               link.id === activeId && "bg-primary bg-opacity-20"
             }`}
             key={link.id}
             onClick={() => {
               setActiveId(link.id);
-              handleReset();
+              handleClick(link.to);
+              // handleReset();
             }}
           >
             <Image width={30} height={30} src={link.icon} alt="icon" />

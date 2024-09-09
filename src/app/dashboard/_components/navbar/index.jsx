@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <div className="flex w-full">
       <div className="relative md:ml-16 ml-5 flex w-1/2 items-center md:justify-center">
-        <div className="flex items-center gap-x-1 md:text-2xl text-xl">
+        <div className="items-center gap-x-1 md:text-2xl md:flex hidden text-xl">
           <span className="font-normal text-[#181818] ">Good day,</span>
           <span>{user.first_name}</span>
         </div>
