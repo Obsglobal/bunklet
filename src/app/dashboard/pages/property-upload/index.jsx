@@ -7,6 +7,7 @@ import {
   dropdown2,
   image,
   spinner,
+  video,
 } from "@/constants/images";
 import { setActiveLink } from "@/features/eventSlice";
 import { useAppDispatch } from "@/lib/hooks";
@@ -15,7 +16,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 const PropertyUpload = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   const [showPropertyType, setShowPropertyType] = useState(false);
   const [showStateSelect, setShowStateSelect] = useState(false);
   const [showLocalitySelect, setShowLocalitySelect] = useState(false);
@@ -255,8 +256,8 @@ const PropertyUpload = () => {
                             }
                           >
                             {value.property}
-                          </div>  console.log(process.env.NEXT_PUBLIC_BASE_URL)
-
+                          </div>{" "}
+                          console.log(process.env.NEXT_PUBLIC_BASE_URL)
                         </div>
                       ))}
                     </div>
@@ -395,10 +396,12 @@ const PropertyUpload = () => {
 
     case 2:
       return (
-        <div className="h-[120vh] md:h-full">
+        <div className="md:h-full h-[150vh]">
           <div className="flex flex-col gap-y-5 md:w-1/2">
             <div className="flex flex-col gap-y-2">
-              <span className="md:text-lg font-medium">Property Information</span>
+              <span className="md:text-lg font-medium">
+                Property Information
+              </span>
               <span className="text-lightgray text-sm md:text-base">
                 &quot;Provide Detailed Property Information Highlight What Makes
                 Your Property Stand Out.
@@ -725,7 +728,10 @@ const PropertyUpload = () => {
               <span className={lableStyles}>Features</span>
               <div className="grid grid-cols-4 gap-3">
                 {features.map((feature) => (
-                  <div className="flex md:text-base text-sm items-center gap-x-2" key={feature.id}>
+                  <div
+                    className="flex md:text-base text-sm items-center gap-x-2"
+                    key={feature.id}
+                  >
                     <input
                       type="checkbox"
                       name="features"
@@ -877,8 +883,84 @@ const PropertyUpload = () => {
               </div>
               {property.images.length !== 0 && (
                 <div className="flex items-center gap-x-2">
-                  <Button onClick={handlePrev}>Prev</Button>
-                  <Button onClick={handleSubmit}>
+                  <Button onClick={handleNext}>Next</Button>
+                  {/* {loading ? (
+                      <Image
+                        width={25}
+                        height={25}
+                        src={spinner}
+                        alt="loading"
+                        className="w-[25px]"
+                      />
+                    ) : (
+                      <span>Submit for Review</span>
+                    )} */}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      );
+    case 4:
+      return (
+        <div>
+          <div className="flex flex-col gap-y-5 w-full md:w-1/2">
+            <div className="flex flex-col gap-y-6">
+              <div className="font-medium md:text-2xl">
+                Upload Property Videos
+              </div>
+              <div className="border border-lightgray flex flex-col gap-y-2 w-[30%] rounded items-center px-2 py-3 justify-center">
+                <div>
+                  <Image
+                    src={video}
+                    alt="upload video"
+                    width={200}
+                    height={200}
+                  />
+                </div>
+                <div className="w-ful mx-auto">
+                  <Button>
+                    <label htmlFor="upload" className="cursor-pointer">
+                      Upload Videos
+                    </label>
+                  </Button>
+                  <input
+                    type="file"
+                    name="upload"
+                    id="upload"
+                    multiple
+                    className="hidden"
+                    onChange={handleImageChange}
+                  />
+                </div>
+              </div>
+              <div className="grid lg:grid-cols-5 gap-4 pt-12">
+                {property.images.map((image, index) => (
+                  <div key={index} className="relative">
+                    <Image
+                      src={image}
+                      width={200}
+                      height={200}
+                      alt="property_image"
+                    />
+                    <button
+                      onClick={() => handleDeleteImage(index)}
+                      className="absolute top-0 right-0 cursor-pointer hover:scale-95 transition-all ease-in"
+                    >
+                      <Image
+                        src={deleteIcon}
+                        width={50}
+                        height={50}
+                        alt="delete_image"
+                      />
+                    </button>
+                  </div>
+                ))}
+              </div>
+              {property.images.length !== 0 && (
+                <div className="flex items-center gap-x-2">
+                  <Button onClick={handleNext}>Next</Button>
+                  {/* <Button onClick={handleSubmit}>
                     {loading ? (
                       <Image
                         width={25}
@@ -890,7 +972,7 @@ const PropertyUpload = () => {
                     ) : (
                       <span>Submit for Review</span>
                     )}
-                  </Button>
+                  </Button> */}
                 </div>
               )}
             </div>
