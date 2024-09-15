@@ -31,4 +31,5 @@ export { default as listIcon} from "../assets/images/listIcon.png";
 export { default as uploadIcon} from "../assets/images/uploadIcon.png";
 export { default as userIcon} from "../assets/images/userIcon.png";
 export { default as image} from "../assets/images/image.png";
+export { default as video} from "../assets/images/video.png";
 export { default as deleteIcon} from "../assets/images/delete.png";
