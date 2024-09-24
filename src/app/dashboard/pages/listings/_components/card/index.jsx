@@ -6,7 +6,7 @@ import { Button } from "@/components/ui";
 
 const UploadedProperty = ({ property }) => {
   return (
-    <div className="flex flex-col w-auto border bg-[#f5f5f5] rounded-[10px] bg-opacity-70 border-[#D8D8D8] pb-4" key={property?.id}>
+    <div className="flex flex-col w-auto border bg-[#f5f5f5] rounded-[10px] bg-opacity-70 border-[#D8D8D8] pb-4">
       <div className="px-2 py-5">
         <Image
           width={450}
@@ -31,7 +31,7 @@ const UploadedProperty = ({ property }) => {
 
             <div className="flex items-start flex-wrap pt-4 gap-3 text-xs md:text-sm">
               {property?.key_features.map((feature) => (
-                <div className="text-[#3d3d3d] rounded-[10px] text-center border border-[#73788c] bg-[#ffffff] text-nowrap px-[10px] py-2">
+                <div key={feature} className="text-[#3d3d3d] rounded-[10px] text-center border border-[#73788c] bg-[#ffffff] text-nowrap px-[10px] py-2">
                   {feature}
                 </div>
               ))}
