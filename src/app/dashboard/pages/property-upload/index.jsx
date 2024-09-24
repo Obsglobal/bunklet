@@ -257,7 +257,6 @@ const PropertyUpload = () => {
                           >
                             {value.property}
                           </div>{" "}
-                          console.log(process.env.NEXT_PUBLIC_BASE_URL)
                         </div>
                       ))}
                     </div>
@@ -960,7 +959,7 @@ const PropertyUpload = () => {
               {property.images.length !== 0 && (
                 <div className="flex items-center gap-x-2">
                   <Button onClick={handleNext}>Next</Button>
-                  {/* <Button onClick={handleSubmit}>
+                  <Button onClick={handleSubmit}>
                     {loading ? (
                       <Image
                         width={25}
@@ -972,7 +971,7 @@ const PropertyUpload = () => {
                     ) : (
                       <span>Submit for Review</span>
                     )}
-                  </Button> */}
+                  </Button>
                 </div>
               )}
             </div>
