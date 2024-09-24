@@ -1,10 +1,10 @@
 import { location } from "@/constants/images";
 import Image from "next/image";
 import React from "react";
-import { Button } from "..";
 import Link from "next/link";
+import { Button } from "@/components/ui";
 
-const PropertyCard = ({ property }) => {
+const UploadedProperty = ({ property }) => {
   return (
     <div className="flex flex-col w-auto border bg-[#f5f5f5] rounded-[10px] bg-opacity-70 border-[#D8D8D8] pb-4">
       <div className="px-2 py-5">
@@ -30,25 +30,11 @@ const PropertyCard = ({ property }) => {
             </div>
 
             <div className="flex items-start flex-wrap pt-4 gap-3 text-xs md:text-sm">
-              <div className="text-[#3d3d3d] rounded-[10px] text-center border border-[#73788c] bg-[#ffffff] text-nowrap px-[10px] py-2">
-                {property.room}
-              </div>
-              <div className="text-[#3d3d3d] border rounded-[10px] border-[#73788c] font-medium text-center bg-[#ffffff] text-nowrap px-[10px] py-2">
-                {property.bathroom}
-              </div>
-              <div className="text-[#3d3d3d] rounded-[10px] text-center bg-[#ffffff] border border-[#73788c] font-medium text-nowrap px-[10px] py-2">
-                {property.toilet}
-              </div>
-              <div className="text-[#3d3d3d] rounded-[10px] text-center bg-[#ffffff] border border-[#73788c] font-medium text-nowrap px-[10px] py-2">
-                {property.kitchen}
-              </div>
-              <div className="text-[#3d3d3d] rounded-[10px] text-center bg-[#ffffff] border border-[#73788c] font-medium text-nowrap px-[10px] py-2">
-                {property.square}
-              </div>{" "}
-              <br />
-              <div className="text-[#3d3d3d] rounded-[10px] text-center bg-[#ffffff] border border-[#73788c] font-medium text-nowrap px-[10px] py-2">
-                {property.parking}
-              </div>
+              {property?.key_features.map((feature) => (
+                <div className="text-[#3d3d3d] rounded-[10px] text-center border border-[#73788c] bg-[#ffffff] text-nowrap px-[10px] py-2">
+                  {feature}
+                </div>
+              ))}
             </div>
             <div className="pt-5">
               <div className="flex flex-col items-start gap-1">
@@ -72,4 +58,4 @@ const PropertyCard = ({ property }) => {
   );
 };
 
-export default PropertyCard;
+export default UploadedProperty;

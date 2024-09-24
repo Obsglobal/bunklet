@@ -65,9 +65,11 @@ const SigninForm = () => {
         if (response.ok) {
           const data = await response.json();
           const token = data.access_token;
+          const refresh_token = data.refresh_token;
           const profile = data.profile;
           localStorage.setItem("user", JSON.stringify(profile));
           localStorage.setItem("accessToken", token);
+          localStorage.setItem("refreshToken", refresh_token);
           toast.success("Successfull signed in");
           setLoading(false);
           push("/");

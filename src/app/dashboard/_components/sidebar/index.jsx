@@ -10,24 +10,53 @@ import { setActiveLink } from "@/features/eventSlice";
 
 const Sidebar = () => {
   const { push } = useRouter();
-  const dispatch = useAppDispatch()
-
+  const dispatch = useAppDispatch();
+  const refreshToken = localStorage.getItem("refreshToken");
+  const token = localStorage.getItem("accessToken");
   const [activeId, setActiveId] = useState(0);
 
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("accessToken");
-    push("/signin");
+  const handleLogout = async () => {
+    if (refreshToken) {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/accounts/sign-out/`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ refresh_token: refreshToken }),
+          }
+        );
+
+        if (response.ok) {
+          localStorage.removeItem("user");
+          localStorage.removeItem("accessToken");
+          localStorage.removeItem("refreshToken");
+          push("/signin");
+        } else {
+          console.error("Signout failed");
+        }
+      } catch (error) {
+        console.error("Error signing out:", error);
+      }
+    } else {
+      console.error("Refresh token missing");
+    }
   };
+
   const handleClick = (link) => {
-    dispatch(setActiveLink(link))  
+    dispatch(setActiveLink(link));
   };
 
   return (
     <>
       <div className="w-full flex-col gap-y-6 hidden md:flex">
         <div className="flex w-full justify-center pt-8">
-          <Link href={'/'} className="text-primary text-2xl font-semibold">Bunklet</Link>
+          <Link href={"/"} className="text-primary text-2xl font-semibold">
+            Bunklet
+          </Link>
         </div>
         <div className="w-full bg-primary bg-opacity-25 p-[0.5px]" />
 
