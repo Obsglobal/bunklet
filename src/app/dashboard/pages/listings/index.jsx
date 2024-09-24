@@ -26,13 +26,13 @@ const PropertyListings = () => {
       }
     };
     fetchProperties();
-  }, []);
+  }, [token]);
 
   return (
     <div>
       <div className="grid grid-cols-4 gap-3">
         {properties.map((property) => (
-          <UploadedProperty property={property} />
+          <UploadedProperty property={property} key={property?.id} />
         ))}
       </div>
     </div>

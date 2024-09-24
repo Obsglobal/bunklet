@@ -6,7 +6,7 @@ import { Button } from "@/components/ui";
 
 const UploadedProperty = ({ property }) => {
   return (
-    <div className="flex flex-col w-auto border bg-[#f5f5f5] rounded-[10px] bg-opacity-70 border-[#D8D8D8] pb-4">
+    <div className="flex flex-col w-auto border bg-[#f5f5f5] rounded-[10px] bg-opacity-70 border-[#D8D8D8] pb-4" key={property?.id}>
       <div className="px-2 py-5">
         <Image
           width={450}
